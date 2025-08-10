@@ -47,8 +47,8 @@ const FortuneCard = ({ item, index }) => {
                 viewport={{ once: true, amount: 0.5 }}
             >
                 <Card className={`relative h-full rounded-2xl shadow-xl overflow-hidden bg-gradient-to-br ${item.color} border-primary/10 backdrop-blur-md`}>
-                    <div className="flex flex-col md:flex-row items-center p-6 md:p-8 gap-6 md:gap-8">
-                        <div className="flex-shrink-0 flex flex-col items-center text-center md:w-1/4">
+                    <div className="flex flex-col md:flex-row items-center p-6 md:p-8 gap-6 md:gap-8 min-h-[200px]">
+                        <div className="flex-shrink-0 flex flex-col items-center justify-center text-center md:w-1/4">
                              <div className="p-4 bg-white/20 rounded-full mb-4 border border-white/30">
                                 <item.icon className="w-10 h-10 text-white" />
                             </div>
