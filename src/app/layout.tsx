@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Happy Birthday Karuna",
   description: 'A special birthday celebration for Karuna!',
   icons: {
-    icon: '/cake-icon.png',
+    icon: '/favicon.ico',
   },
 };
 
