@@ -42,6 +42,7 @@ export function Balloons() {
   }, []);
 
   const createBalloon = useCallback(() => {
+    if (!isMounted) return;
     const id = Date.now() + Math.random();
     const size = Math.random() * 60 + 40; // Smaller balloons
     const style: React.CSSProperties = {
@@ -72,7 +73,7 @@ export function Balloons() {
         setBalloons(prev => prev.filter(b => b.id !== id));
     }, 11000); // 11s to clear
 
-  }, []);
+  }, [isMounted]);
 
   useEffect(() => {
     if (isMounted) {

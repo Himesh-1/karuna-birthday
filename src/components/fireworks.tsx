@@ -18,6 +18,7 @@ export function Fireworks() {
   }, []);
 
   const createFirework = useCallback(() => {
+    if (!isMounted) return;
     const newFirework = {
       id: Date.now() + Math.random(),
       style: {
@@ -33,7 +34,7 @@ export function Fireworks() {
     setTimeout(() => {
       setFireworks(prev => prev.filter(f => f.id !== newFirework.id));
     }, 3000);
-  }, []);
+  }, [isMounted]);
 
   useEffect(() => {
     if (!isMounted) return;

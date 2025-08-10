@@ -7,9 +7,8 @@ import React, { useState, useEffect } from 'react';
 export default function Home() {
   const [isGiftOpened, setIsGiftOpened] = useState(false);
   const audioRef = React.useRef<HTMLAudioElement>(null);
-
-  // By starting with a "loading" state, we prevent hydration mismatches.
   const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -21,8 +20,7 @@ export default function Home() {
   };
 
   if (!isMounted) {
-    // Render nothing or a loading spinner on the server and initial client render
-    return null; 
+    return null;
   }
 
   return (
