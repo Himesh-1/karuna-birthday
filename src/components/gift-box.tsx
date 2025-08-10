@@ -14,11 +14,11 @@ const GiftBoxCSS = ({ isOpening, onClick }: { isOpening: boolean, onClick: () =>
     <div className="relative cursor-pointer group" onClick={onClick} style={{ width: '200px', height: '200px' }}>
       {/* Lid */}
       <div
-        className={`absolute bg-accent w-[220px] h-[60px] rounded-md transition-all duration-700 ease-in-out border-2 border-primary-foreground/10 ${isOpening ? 'transform -translate-y-40 rotate-12 opacity-0' : 'group-hover:-translate-y-1'}`}
+        className={`absolute bg-accent w-[220px] h-[60px] rounded-md transition-all duration-700 ease-in-out border-4 border-primary-foreground/30 ${isOpening ? 'transform -translate-y-40 rotate-12 opacity-0' : 'group-hover:-translate-y-1'}`}
         style={{ top: '0', left: '-10px', zIndex: 20 }}
       ></div>
       {/* Box */}
-      <div className="absolute bg-primary w-[200px] h-[200px] rounded-lg border-2 border-primary-foreground/10" style={{ top: '40px', left: '0' }}></div>
+      <div className="absolute bg-primary w-[200px] h-[200px] rounded-lg border-4 border-primary-foreground/30" style={{ top: '40px', left: '0' }}></div>
       {/* Ribbon Vertical */}
       <div className="absolute bg-secondary/70 w-[30px] h-[240px]" style={{ top: '0', left: '85px', zIndex: 30 }}></div>
       {/* Ribbon Horizontal */}

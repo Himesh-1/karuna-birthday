@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState } from 'react';
@@ -12,11 +13,11 @@ const Present = ({ color, ribbonColor, onClick }: { color: string, ribbonColor: 
     >
       {/* Lid */}
       <div
-        className="absolute w-[160px] h-[40px] rounded-md transition-transform duration-300 group-hover:-translate-y-1"
+        className="absolute w-[160px] h-[40px] rounded-md transition-transform duration-300 group-hover:-translate-y-1 border-4 border-primary-foreground/20"
         style={{ top: '0', left: '-5px', zIndex: 20, backgroundColor: ribbonColor }}
       ></div>
       {/* Box */}
-      <div className="absolute w-[150px] h-[150px] rounded-lg" style={{ top: '30px', left: '0', backgroundColor: color }}></div>
+      <div className="absolute w-[150px] h-[150px] rounded-lg border-4 border-primary-foreground/20" style={{ top: '30px', left: '0', backgroundColor: color }}></div>
       {/* Ribbon Vertical */}
       <div className="absolute w-[25px] h-[180px]" style={{ top: '0', left: '62.5px', zIndex: 30, backgroundColor: ribbonColor }}></div>
        {/* Bow */}
