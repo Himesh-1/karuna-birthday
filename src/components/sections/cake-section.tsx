@@ -57,14 +57,6 @@ export function CakeSection() {
             data-ai-hint="birthday cake"
           />
         </div>
-
-        {/* Balloons */}
-        <div className="absolute inset-0">
-          <Balloon className="bottom-0 -left-40 animate-bobbing" style={{ animationDelay: '0.5s' }} colorClass="text-accent" />
-          <Balloon className="-top-20 -right-48 animate-bobbing" style={{ animationDelay: '1s' }} colorClass="text-secondary" />
-          <Balloon className="-bottom-20 -right-32 animate-bobbing" style={{ animationDelay: '0.2s' }} colorClass="text-primary" />
-          <Balloon className="top-10 -left-56 animate-bobbing" style={{ animationDelay: '1.2s' }} colorClass="text-yellow-300" />
-        </div>
       </div>
     </section>
   );
