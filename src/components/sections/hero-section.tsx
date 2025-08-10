@@ -16,14 +16,14 @@ export function HeroSection() {
         >
           <motion.span whileHover={{ scale: 1.1, rotate: -2, color: 'hsl(var(--secondary))' }} className="text-primary/80 inline-block">Happy</motion.span> <motion.span whileHover={{ scale: 1.1, rotate: 2,  color: 'hsl(var(--accent))' }} className="text-primary inline-block">Birthday,</motion.span>
         </motion.h1>
-        <motion.p 
-            className="font-headline text-7xl md:text-9xl lg:text-[10rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent"
+        <motion.div 
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.5, type: 'spring', stiffness: 100 }}
+            className="font-headline text-7xl md:text-9xl lg:text-[10rem] font-extrabold"
         >
-          <motion.span whileHover={{ scale: 1.1, rotate: -2 }} className="inline-block">Karuna!</motion.span>
-        </motion.p>
+          <motion.span whileHover={{ scale: 1.1, rotate: -2 }} className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Karuna!</motion.span>
+        </motion.div>
         <motion.p 
             className="mt-4 font-body text-lg text-muted-foreground"
             initial={{ opacity: 0 }}
