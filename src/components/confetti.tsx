@@ -19,7 +19,7 @@ export function Confetti() {
   useEffect(() => {
     if (!isMounted) return;
     
-    const newConfetti = Array.from({ length: 3000 }).map(() => ({
+    const newConfetti = Array.from({ length: 500 }).map(() => ({
       style: {
         '--confetti-end-x': `${(Math.random() - 0.5) * 90}vw`,
         '--confetti-end-y': `${Math.random() * 50 + 50}vh`,
