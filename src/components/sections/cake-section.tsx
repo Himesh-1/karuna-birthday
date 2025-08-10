@@ -58,27 +58,27 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
 
     return (
         <div
-            className="relative animate-bobbing cursor-pointer group w-[420px] h-[400px]"
+            className="relative animate-bobbing cursor-pointer group w-[420px] h-[400px] flex items-end justify-center"
             style={{ animationDelay: '1.5s' }}
             onClick={onCakeClick}
         >
-            <div className="relative w-full h-full">
+            <div className="relative w-[420px] h-[310px]">
                 {/* Base Plate */}
                 <CakeLayer
-                    className="absolute bottom-[55px] left-1/2 -translate-x-1/2"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2"
                     custom={3}
                     variants={layerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.5 }}
                 >
-                    <div className="w-[400px] h-[20px] bg-rose-300/80 rounded-full absolute bottom-[15px] shadow-2xl" />
+                    <div className="w-[400px] h-[20px] bg-rose-300/80 rounded-full absolute -bottom-[5px] shadow-2xl" />
                     <div className="w-[420px] h-[20px] bg-gray-200 rounded-full shadow-inner" />
                 </CakeLayer>
 
                  {/* Middle Layer */}
                 <CakeLayer
-                    className="w-[350px] h-[120px] bg-purple-300 rounded-2xl shadow-xl absolute bottom-[90px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform"
+                    className="w-[350px] h-[120px] bg-purple-300 rounded-2xl shadow-xl absolute bottom-[15px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform"
                     custom={2}
                     variants={layerVariants}
                     initial="hidden"
@@ -91,7 +91,7 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
 
                 {/* Top Layer */}
                 <CakeLayer
-                    className="w-[300px] h-[100px] bg-rose-200 rounded-2xl shadow-lg absolute bottom-[210px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform"
+                    className="w-[300px] h-[100px] bg-rose-200 rounded-2xl shadow-lg absolute bottom-[135px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform"
                     custom={1}
                     variants={layerVariants}
                     initial="hidden"
