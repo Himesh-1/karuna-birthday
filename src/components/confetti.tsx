@@ -11,7 +11,7 @@ export function Confetti() {
   const [pieces, setPieces] = useState<ConfettiPiece[]>([]);
 
   useEffect(() => {
-    const newConfetti = Array.from({ length: 300 }).map(() => ({
+    const newConfetti = Array.from({ length: 3000 }).map(() => ({
       style: {
         '--confetti-end-x': `${(Math.random() - 0.5) * 90}vw`,
         '--confetti-end-y': `${Math.random() * 50 + 50}vh`,
