@@ -4,8 +4,11 @@ import { Toaster } from "@/components/ui/toaster"
 import { DynamicBalloons } from '@/components/dynamic-loader';
 
 export const metadata: Metadata = {
-  title: "Karuna's Birthday Blast",
+  title: "Happy Birthday Karuna",
   description: 'A special birthday celebration for Karuna!',
+  icons: {
+    icon: '/cake-icon.png',
+  },
 };
 
 export default function RootLayout({
