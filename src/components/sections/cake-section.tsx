@@ -27,9 +27,9 @@ const Candle = ({ left, animationDelay, isOut, flicker }: { left: string, animat
           }}
           className="w-3 h-5 bg-amber-400 rounded-t-full origin-bottom"
           style={{ 
-            animation: flicker ? 'none' : 'flame 1.5s ease-in-out infinite',
+            boxShadow: '0 0 10px 2px #fef08a, 0 0 20px 4px #fca5a5',
+            animation: !flicker ? 'flame 1.5s ease-in-out infinite' : 'none',
             animationDelay, 
-            boxShadow: '0 0 10px 2px #fef08a, 0 0 20px 4px #fca5a5' 
           }}
         />
       )}
@@ -58,40 +58,13 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
 
     return (
         <div
-            className="relative animate-bobbing cursor-pointer group w-[420px] h-[400px] flex items-end justify-center"
+            className="relative animate-bobbing cursor-pointer group w-[420px] h-[400px] flex flex-col items-center justify-end"
             style={{ animationDelay: '1.5s' }}
             onClick={onCakeClick}
         >
-            <div className="relative w-[420px] h-[310px]">
-                {/* Base Plate */}
-                <CakeLayer
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2"
-                    custom={3}
-                    variants={layerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                >
-                    <div className="w-[400px] h-[20px] bg-rose-300/80 rounded-full absolute -bottom-[5px] shadow-2xl" />
-                    <div className="w-[420px] h-[20px] bg-gray-200 rounded-full shadow-inner" />
-                </CakeLayer>
-
-                 {/* Middle Layer */}
-                <CakeLayer
-                    className="w-[350px] h-[120px] bg-purple-300 rounded-2xl shadow-xl absolute bottom-[15px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform"
-                    custom={2}
-                    variants={layerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                >
-                    <div className="absolute top-0 w-full h-8 bg-white/50 rounded-t-2xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%)' }} />
-                    <div className="absolute -bottom-2 w-[102%] h-8 bg-purple-400/40 rounded-full left-1/2 -translate-x-1/2" />
-                </CakeLayer>
-
                 {/* Top Layer */}
                 <CakeLayer
-                    className="w-[300px] h-[100px] bg-rose-200 rounded-2xl shadow-lg absolute bottom-[135px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform"
+                    className="w-[300px] h-[100px] bg-rose-200 rounded-2xl shadow-lg z-20"
                     custom={1}
                     variants={layerVariants}
                     initial="hidden"
@@ -103,7 +76,34 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
                     <Candle left="50%" animationDelay="0.2s" isOut={candlesOut} flicker={flicker} />
                     <Candle left="70%" animationDelay="0.4s" isOut={candlesOut} flicker={flicker} />
                 </CakeLayer>
-            </div>
+
+                 {/* Middle Layer */}
+                <CakeLayer
+                    className="w-[350px] h-[120px] bg-purple-300 rounded-2xl shadow-xl -mb-4 z-10"
+                    custom={2}
+                    variants={layerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                >
+                    <div className="absolute top-0 w-full h-8 bg-white/50 rounded-t-2xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%)' }} />
+                    <div className="absolute -bottom-2 w-[102%] h-8 bg-purple-400/40 rounded-full left-1/2 -translate-x-1/2" />
+                </CakeLayer>
+
+                {/* Base Plate */}
+                <CakeLayer
+                    className="w-full"
+                    custom={3}
+                    variants={layerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                >
+                    <div className="relative w-full h-[30px] flex items-center justify-center">
+                        <div className="w-[400px] h-[20px] bg-rose-300/80 rounded-full absolute bottom-0 shadow-2xl" />
+                        <div className="w-[420px] h-[20px] bg-gray-200 rounded-full shadow-inner" />
+                    </div>
+                </CakeLayer>
         </div>
     );
 };
