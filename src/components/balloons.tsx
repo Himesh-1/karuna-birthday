@@ -3,46 +3,34 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 
-const BalloonShape = ({ style, colorClass }: { style: React.CSSProperties, colorClass: string }) => (
-  <svg
-    viewBox="0 0 100 125"
-    className={`absolute drop-shadow-lg ${colorClass} animate-float`}
-    style={style}
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <g>
+const BalloonShape = ({ style, color }: { style: React.CSSProperties, color: { base: string, highlight: string } }) => (
+    <svg
+      viewBox="0 0 100 120"
+      className="absolute drop-shadow-lg animate-float"
+      style={style}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <radialGradient id={`grad-${color.base}`} cx="40%" cy="40%" r="50%" fx="30%" fy="30%">
+          <stop offset="0%" style={{ stopColor: color.highlight, stopOpacity: 1 }} />
+          <stop offset="100%" style={{ stopColor: color.base, stopOpacity: 1 }} />
+        </radialGradient>
+      </defs>
       <path
-        d="M50,5C25.1,5,5,25.1,5,50s20.1,45,45,45s45-20.1,45-45S74.9,5,50,5z M50,90C27.9,90,10,72.1,10,50S27.9,10,50,10s40,17.9,40,40S72.1,90,50,90z"
-        className="opacity-80"
-        fill="currentColor"
+        d="M50,110 C20,100 10,75 20,50 C30,25 70,25 80,50 C90,75 80,100 50,110 Z"
+        fill={`url(#grad-${color.base})`}
       />
       <path
-        d="M50,100c-2.8,0-5,2.2-5,5s2.2,5,5,5s5-2.2,5-5S52.8,100,50,100z"
-        className="opacity-80"
-        fill="currentColor"
+        d="M50,110 Q48,115 45,118 L55,118 Q52,115 50,110 Z"
+        fill={color.base}
       />
-      <path
-        d="M48.5,115h3c0.6,0,1-0.4,1-1v-14c0-0.6-0.4-1-1-1h-3c-0.6,0-1,0.4-1,1v14C47.5,114.6,47.9,115,48.5,115z"
-        className="opacity-80"
-        fill="currentColor"
-      />
-       <path 
-        d="M 65 25 C 60 20, 50 20, 40 30 C 35 35, 35 45, 40 50" 
-        fill="none" 
-        stroke="white" 
-        strokeWidth="2" 
-        strokeLinecap="round"
-        className="opacity-50"
-      />
-    </g>
-  </svg>
+    </svg>
 );
-
 
 type BalloonObject = {
   id: number;
   style: React.CSSProperties;
-  colorClass: string;
+  color: { base: string, highlight: string };
 };
 
 export function Balloons() {
@@ -56,28 +44,36 @@ export function Balloons() {
   const createBalloon = useCallback(() => {
     if(!isMounted) return;
     const id = Date.now() + Math.random();
-    const size = Math.random() * 80 + 80; // size between 80px and 160px
+    const size = Math.random() * 80 + 80;
     const style: React.CSSProperties = {
       left: `${Math.random() * 100}vw`,
       width: `${size}px`,
-      height: `${size * 1.25}px`,
-      animationDuration: `${Math.random() * 8 + 10}s`, // duration between 10s and 18s
+      height: `${size * 1.2}px`,
+      animationDuration: `${Math.random() * 8 + 10}s`,
       animationTimingFunction: 'linear',
       animationFillMode: 'forwards'
     };
-    const colors = ['text-primary', 'text-secondary', 'text-accent', 'text-yellow-300', 'text-pink-400'];
-    const colorClass = colors[Math.floor(Math.random() * colors.length)];
 
-    setBalloons(prev => [...prev, { id, style, colorClass }]);
+    const colors = [
+        { base: 'hsl(330, 90%, 65%)', highlight: 'hsl(330, 90%, 85%)' }, // primary
+        { base: 'hsl(180, 80%, 45%)', highlight: 'hsl(180, 80%, 65%)' }, // secondary
+        { base: 'hsl(45, 100%, 60%)', highlight: 'hsl(45, 100%, 80%)' }, // accent
+        { base: 'hsl(54, 90%, 60%)', highlight: 'hsl(54, 90%, 80%)' },  // yellow
+        { base: 'hsl(320, 80%, 70%)', highlight: 'hsl(320, 80%, 90%)' }  // pink
+    ];
+
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    setBalloons(prev => [...prev, { id, style, color }]);
     setTimeout(() => {
         setBalloons(prev => prev.filter(b => b.id !== id));
-    }, 18000); // Remove after animation ends
+    }, 18000);
 
   }, [isMounted]);
 
   useEffect(() => {
     if (isMounted) {
-      const interval = setInterval(createBalloon, 3000);
+      const interval = setInterval(createBalloon, 2500);
       return () => clearInterval(interval);
     }
   }, [isMounted, createBalloon]);
@@ -89,7 +85,7 @@ export function Balloons() {
   return (
     <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-50 overflow-hidden">
       {balloons.map(balloon => (
-        <BalloonShape key={balloon.id} style={balloon.style} colorClass={balloon.colorClass} />
+        <BalloonShape key={balloon.id} style={balloon.style} color={balloon.color} />
       ))}
     </div>
   );
