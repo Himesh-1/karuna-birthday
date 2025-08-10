@@ -4,50 +4,62 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '../ui/button';
+import { Confetti } from '../confetti';
+import { Fireworks } from '../fireworks';
 
 const CakeLayer = ({ className, children }: { className?: string, children?: React.ReactNode }) => (
-  <div className={`w-[280px] h-[70px] rounded-md relative ${className}`}>
+  <div className={`relative ${className}`}>
     {children}
   </div>
 );
 
 const Candle = ({ left, animationDelay, isOut, flicker }: { left: string, animationDelay: string, isOut: boolean, flicker: boolean }) => (
-  <div className="absolute bottom-[65px] flex flex-col items-center" style={{ left }}>
+  <div className="absolute bottom-full flex flex-col items-center" style={{ left, transform: 'translateX(-50%)' }}>
     <AnimatePresence>
       {!isOut && (
         <motion.div
           initial={{ opacity: 1, scaleY: 1 }}
-          exit={{ opacity: 0, scaleY: 0, transition: { duration: 0.3 } }}
+          exit={{ opacity: 0, scaleY: 0, y: 10, transition: { duration: 0.3 } }}
           animate={{
-            scaleY: flicker ? [1, 0.8, 1.1, 0.9, 1] : 1,
-            transition: { duration: 0.2 }
+            scaleY: flicker ? [1, 1.2, 0.9, 1.1, 1] : 1,
+            opacity: flicker ? [1, 0.9, 1, 0.85, 1] : 1,
+            transition: { duration: 0.15, ease: "easeInOut" }
           }}
-          className="w-2.5 h-2.5 bg-amber-300 rounded-full animate-flame origin-bottom"
-          style={{ animationDelay }}
+          className="w-3 h-5 bg-amber-400 rounded-full animate-flame origin-bottom"
+          style={{ animationDelay, boxShadow: '0 0 10px 2px #fef08a, 0 0 20px 4px #fca5a5' }}
         />
       )}
     </AnimatePresence>
-    <div className="w-3 h-12 bg-pink-300 border-2 border-pink-400/50 rounded-t-sm" />
+    <div className="w-4 h-16 bg-pink-300 border-2 border-pink-400/50 rounded-t-lg" style={{
+        backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent)'
+    }} />
   </div>
 );
+
 
 const CSSCake = ({ onCakeClick, candlesOut, flicker }) => (
   <div
     className="relative animate-bobbing cursor-pointer"
-    style={{ animationDelay: '0.5s' }}
+    style={{ animationDelay: '0.5s', width: '350px', height: '300px' }}
     onClick={onCakeClick}
   >
-    <CakeLayer className="bg-rose-200 shadow-lg">
-      <Candle left="30%" animationDelay="0s" isOut={candlesOut} flicker={flicker} />
-      <Candle left="50%" animationDelay="0.2s" isOut={candlesOut} flicker={flicker} />
-      <Candle left="70%" animationDelay="0.4s" isOut={candlesOut} flicker={flicker} />
-    </CakeLayer>
-    <CakeLayer className="bg-purple-300 top-[-5px] shadow-xl w-[280px] h-[80px]">
-        <div className="absolute bottom-0 left-0 w-full h-4 bg-purple-400/30" />
-    </CakeLayer>
-     <div className="w-[320px] h-[20px] bg-rose-300/80 rounded-lg absolute top-[140px] left-[-20px] shadow-2xl" />
+      {/* Top Layer */}
+      <CakeLayer className="w-[300px] h-[100px] bg-rose-200 rounded-t-2xl shadow-lg absolute bottom-[150px] left-1/2 -translate-x-1/2">
+          <div className="absolute bottom-0 w-full h-4 bg-rose-300/50" />
+          <Candle left="30%" animationDelay="0s" isOut={candlesOut} flicker={flicker} />
+          <Candle left="50%" animationDelay="0.2s" isOut={candlesOut} flicker={flicker} />
+          <Candle left="70%" animationDelay="0.4s" isOut={candlesOut} flicker={flicker} />
+      </CakeLayer>
+      {/* Middle Layer */}
+      <CakeLayer className="w-[350px] h-[100px] bg-purple-300 rounded-2xl shadow-xl absolute bottom-[50px] left-1/2 -translate-x-1/2">
+          <div className="absolute top-0 w-full h-8 bg-white/50 rounded-t-2xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%)' }} />
+          <div className="absolute bottom-0 w-full h-4 bg-purple-400/40" />
+      </CakeLayer>
+      {/* Base Plate */}
+      <div className="w-[400px] h-[25px] bg-rose-300/80 rounded-lg absolute bottom-[30px] left-1/2 -translate-x-1/2 shadow-2xl" />
   </div>
 );
+
 
 export function CakeSection() {
   const [clickCount, setClickCount] = useState(0);
@@ -71,7 +83,7 @@ export function CakeSection() {
 
     // Trigger flicker animation
     setFlicker(true);
-    setTimeout(() => setFlicker(false), 200);
+    setTimeout(() => setFlicker(false), 150);
 
     // Start timer on first click
     if (clickCount === 0) {
@@ -89,7 +101,7 @@ export function CakeSection() {
 
     if (newClickCount >= 10) {
       setCandlesOut(true);
-      setMessage('You did it! Happy Birthday Karuna! 🥳');
+      setMessage('You did it! Scroll down for one last surprise... ✨');
       if (timerRef.current) {
         clearTimeout(timerRef.current);
         timerRef.current = null;
@@ -112,6 +124,14 @@ export function CakeSection() {
 
   return (
     <section id="cake" className="relative w-full min-h-screen flex flex-col items-center justify-center py-20 px-4 overflow-hidden bg-gradient-to-br from-purple-50 via-rose-50 to-amber-50">
+       <AnimatePresence>
+        {candlesOut && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 w-full h-full z-20 pointer-events-none">
+            <Confetti />
+            <Fireworks />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className="text-center z-10">
         <motion.h2 
           className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90"
@@ -133,7 +153,7 @@ export function CakeSection() {
         </motion.p>
       </div>
       
-      <div className="relative mt-12 w-full min-h-[400px] flex items-center justify-center z-0">
+      <div className="relative mt-20 w-full min-h-[400px] flex items-center justify-center z-0">
           <CSSCake onCakeClick={handleCakeClick} candlesOut={candlesOut} flicker={flicker}/>
       </div>
 
@@ -143,11 +163,11 @@ export function CakeSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
-                    className="mt-8 text-center"
+                    className="mt-8 text-center z-10"
                 >
                     <p className={`text-xl font-bold font-body ${candlesOut ? 'text-green-600' : 'text-destructive'}`}>{message}</p>
-                    {candlesOut && (
-                         <Button onClick={resetGame} className="mt-4">Play Again</Button>
+                    {message.includes('Try harder') && (
+                         <Button onClick={resetGame} className="mt-4">Try Again</Button>
                     )}
                 </motion.div>
             )}
