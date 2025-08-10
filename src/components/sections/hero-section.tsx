@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative w-full h-screen flex flex-col items-center justify-center text-center p-4 overflow-hidden bg-gradient-to-b from-background via-primary/10 to-background">
+    <section id="hero" className="relative w-full h-screen flex flex-col items-center justify-center text-center p-4 overflow-hidden bg-gradient-to-br from-purple-100 via-rose-100 to-amber-100">
       <Confetti />
       <div className="z-10">
         <motion.h1 
@@ -17,12 +17,12 @@ export function HeroSection() {
           <motion.span whileHover={{ scale: 1.1, rotate: -2, color: 'hsl(var(--secondary))' }} className="text-primary/80 inline-block">Happy</motion.span> <motion.span whileHover={{ scale: 1.1, rotate: 2,  color: 'hsl(var(--accent))' }} className="text-primary inline-block">Birthday,</motion.span>
         </motion.h1>
         <motion.p 
-            className="font-headline text-7xl md:text-9xl lg:text-[10rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent animate-pulse"
+            className="font-headline text-7xl md:text-9xl lg:text-[10rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.5, type: 'spring', stiffness: 100 }}
         >
-          Karuna!
+          <motion.span whileHover={{ scale: 1.1, rotate: -2,  color: 'hsl(var(--primary))' }} className="inline-block animate-pulse">Karuna!</motion.span>
         </motion.p>
         <motion.p 
             className="mt-4 font-body text-lg text-muted-foreground"
