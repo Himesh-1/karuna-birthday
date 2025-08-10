@@ -3,26 +3,32 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import { Star, Moon, Sun } from 'lucide-react';
+import { Star, Moon, Sun, Mail } from 'lucide-react';
 
 const fortunes = [
   {
     title: 'Next Week',
     icon: Star,
-    fortune: 'An unexpected message will bring a delightful surprise. Keep an eye on your inbox! Your creativity will be sparkling, so it\'s a great time to start a small project.',
+    fortune: 'Things finally start feeling smoother—talks go well, people understand you better, and you’ll feel more like yourself. Love and friendships bring warmth. Just be careful with quick money decisions.',
     color: 'from-pink-400/20 to-purple-400/20',
   },
   {
     title: 'Next Month',
     icon: Moon,
-    fortune: 'Adventure is calling! A spontaneous trip or a new local discovery is on the horizon. Embrace the unknown and you\'ll create some of your best memories yet.',
+    fortune: 'Time to slow down a bit and focus on yourself—build good habits, set clear goals, and take care of your health. Some unexpected changes at work or studies could actually turn out to be great for you.',
     color: 'from-blue-400/20 to-teal-400/20',
   },
   {
     title: 'Next Year',
     icon: Sun,
-    fortune: 'This is your year to shine. A major personal goal is within reach. Your hard work will pay off in ways you can\'t even imagine. Prepare for a year of growth, joy, and success!',
+    fortune: 'This year will help you grow into a stronger, wiser you. Relationships may change for the better, your career can move forward if you take smart chances, and new learning opportunities will light up your path. Take care of your health and energy, and you’ll shine all the way.',
     color: 'from-yellow-400/20 to-orange-400/20',
+  },
+   {
+    title: 'Personal Message for You',
+    icon: Mail,
+    fortune: 'You’re stepping into a time where life will start making more sense, and the pieces will begin to fall into place. Your kindness, courage, and passion are your superpowers—don’t hold them back. Trust that every twist in the road is leading you to something better. You’ve got everything it takes to turn this year into one of your best chapters yet.',
+    color: 'from-rose-400/20 to-red-400/20',
   },
 ];
 
@@ -38,7 +44,7 @@ export function FortuneSection() {
             The stars have aligned to offer a peek at the wonderful things coming your way.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {fortunes.map((item, index) => (
             <motion.div
               key={index}
