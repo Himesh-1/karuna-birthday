@@ -50,12 +50,12 @@ export function CalendarSection() {
 
       <div className="w-full max-w-6xl mx-auto flex items-center justify-center gap-8 md:gap-16">
         <motion.div
-          className="w-full md:w-1/2 flex"
-          animate={{ justifyContent: isDateClicked ? 'flex-end' : 'center' }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          className="w-full md:w-1/2"
+          animate={{ x: isDateClicked ? '-25%' : 0 }}
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         >
           <motion.div
-            className="w-full max-w-md p-6 md:p-8 bg-white/50 backdrop-blur-sm shadow-2xl rounded-2xl border-primary/20"
+            className="w-full max-w-md p-6 md:p-8 bg-white/50 backdrop-blur-sm shadow-2xl rounded-2xl border-primary/20 mx-auto"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -91,10 +91,15 @@ export function CalendarSection() {
         <AnimatePresence>
           {isDateClicked && (
             <motion.div
-              className="w-full md:w-1/2 text-left"
-              initial={{ opacity: 0, x: 20, width: 0 }}
-              animate={{ opacity: 1, x: 0, width: '50%', transition: { delay: 0.5, duration: 0.7 } }}
-              exit={{ opacity: 0, x: -20, width: 0 }}
+              className="w-1/2 text-left absolute right-0"
+              initial={{ opacity: 0, scale: 0.8, x: 100 }}
+              animate={{ 
+                opacity: 1, 
+                scale: 1,
+                x: 0,
+                transition: { delay: 0.4, duration: 0.8, ease: [0.4, 0, 0.2, 1] } 
+              }}
+              exit={{ opacity: 0, scale: 0.8 }}
             >
               <p className="text-4xl md:text-6xl font-bold font-headline text-primary animate-wiggle">
                 Congratulations you are one year older now yayy! 🎉
