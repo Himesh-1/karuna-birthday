@@ -99,6 +99,15 @@
   .animate-bobbing {
     animation: bobbing 4s ease-in-out infinite;
   }
+
+  @keyframes flame {
+    0%, 100% { transform: scaleY(1) translateY(0); opacity: 1; }
+    50% { transform: scaleY(1.2) translateY(-4px); opacity: 0.8; }
+  }
+
+  .animate-flame {
+    animation: flame 1.5s ease-in-out infinite;
+  }
   
   @keyframes zoom-in-out {
     0%, 100% {

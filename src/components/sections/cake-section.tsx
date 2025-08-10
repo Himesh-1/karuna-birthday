@@ -1,10 +1,36 @@
+
 "use client";
 
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stage } from '@react-three/drei';
-import { CakeModel } from '@/components/cake-model';
+import React from 'react';
 import { motion } from 'framer-motion';
+
+const CakeLayer = ({ className, children }: { className?: string, children?: React.ReactNode }) => (
+  <div className={`w-[280px] h-[70px] rounded-md relative ${className}`}>
+    {children}
+  </div>
+);
+
+const Candle = ({ left, animationDelay }: { left: string, animationDelay: string }) => (
+  <div className="absolute bottom-[65px] flex flex-col items-center" style={{ left }}>
+    <div className="w-2.5 h-2.5 bg-amber-300 rounded-full animate-flame" style={{ animationDelay }} />
+    <div className="w-3 h-12 bg-pink-300 border-2 border-pink-400/50 rounded-t-sm" />
+  </div>
+);
+
+const CSSCake = () => (
+  <div className="relative animate-bobbing" style={{ animationDelay: '0.5s' }}>
+    <CakeLayer className="bg-rose-200 shadow-lg">
+      <Candle left="30%" animationDelay="0s" />
+      <Candle left="50%" animationDelay="0.2s" />
+      <Candle left="70%" animationDelay="0.4s" />
+    </CakeLayer>
+    <CakeLayer className="bg-purple-300 top-[-5px] shadow-xl w-[280px] h-[80px]">
+        <div className="absolute bottom-0 left-0 w-full h-4 bg-purple-400/30" />
+    </CakeLayer>
+     <div className="w-[320px] h-[20px] bg-rose-300/80 rounded-lg absolute top-[140px] left-[-20px] shadow-2xl" />
+  </div>
+);
+
 
 export function CakeSection() {
   return (
@@ -30,15 +56,8 @@ export function CakeSection() {
         </motion.p>
       </div>
       
-      <div className="relative mt-2 w-full h-[400px] md:h-[500px] flex items-center justify-center z-0 animate-zoom-in-out">
-        <Canvas camera={{ fov: 45, position: [0, 2, 8] }}>
-          <Suspense fallback={null}>
-            <Stage environment="city" intensity={0.6}>
-              <CakeModel />
-            </Stage>
-          </Suspense>
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
-        </Canvas>
+      <div className="relative mt-12 w-full min-h-[400px] flex items-center justify-center z-0">
+          <CSSCake />
       </div>
     </section>
   );
