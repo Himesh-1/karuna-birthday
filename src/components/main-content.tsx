@@ -1,40 +1,53 @@
 
 "use client";
 
-import { HeroSection } from '@/components/sections/hero-section';
-import { FortuneSection } from '@/components/sections/fortune-section';
-import { CakeSection } from '@/components/sections/cake-section';
-import { WishesSection } from '@/components/sections/wishes-section';
-import { FinaleSection } from '@/components/sections/finale-section';
 import React, { useEffect } from 'react';
 import { Button } from './ui/button';
 import { ArrowDown } from 'lucide-react';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from 'framer-motion';
-import { PresentsSection } from './sections/presents-section';
-import { CalendarSection } from './sections/calendar-section';
+import dynamic from 'next/dynamic';
+import { Skeleton } from './ui/skeleton';
+
+const SectionLoader = () => <div className="w-full h-screen flex items-center justify-center"><Skeleton className="h-20 w-20 rounded-full" /></div>;
+
+const HeroSection = dynamic(() => import('@/components/sections/hero-section').then(mod => mod.HeroSection), { ssr: false, loading: SectionLoader });
+const FortuneSection = dynamic(() => import('@/components/sections/fortune-section').then(mod => mod.FortuneSection), { ssr: false, loading: SectionLoader });
+const CalendarSection = dynamic(() => import('@/components/sections/calendar-section').then(mod => mod.CalendarSection), { ssr: false, loading: SectionLoader });
+const CakeSection = dynamic(() => import('@/components/sections/cake-section').then(mod => mod.CakeSection), { ssr: false, loading: SectionLoader });
+const WishesSection = dynamic(() => import('@/components/sections/wishes-section').then(mod => mod.WishesSection), { ssr: false, loading: SectionLoader });
+const PresentsSection = dynamic(() => import('./sections/presents-section').then(mod => mod.PresentsSection), { ssr: false, loading: SectionLoader });
+const FinaleSection = dynamic(() => import('@/components/sections/finale-section').then(mod => mod.FinaleSection), { ssr: false, loading: SectionLoader });
+
 
 export function MainContent() {
     useEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
-        const sections = gsap.utils.toArray('section');
-        sections.forEach((section: any) => {
-            gsap.fromTo(section, 
-                { autoAlpha: 0, y: 50 },
-                {
-                    autoAlpha: 1,
-                    y: 0,
-                    duration: 1.2,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: section,
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse',
-                    }
-                }
-            );
-        });
+        // We need to wait for the dynamic components to load before running GSAP
+        const timer = setTimeout(() => {
+            const sections = gsap.utils.toArray('section');
+            if (sections.length > 0) {
+                sections.forEach((section: any) => {
+                    gsap.fromTo(section, 
+                        { autoAlpha: 0, y: 50 },
+                        {
+                            autoAlpha: 1,
+                            y: 0,
+                            duration: 1.2,
+                            ease: 'power3.out',
+                            scrollTrigger: {
+                                trigger: section,
+                                start: 'top 85%',
+                                toggleActions: 'play none none reverse',
+                            }
+                        }
+                    );
+                });
+            }
+        }, 100); // A small delay to ensure components are in the DOM
+
+        return () => clearTimeout(timer);
     }, []);
 
     return (

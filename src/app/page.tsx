@@ -1,8 +1,7 @@
 
 'use client';
-import { GiftBox } from '@/components/gift-box';
-import { MainContent } from '@/components/main-content';
 import React, { useState, useEffect } from 'react';
+import { DynamicGiftBox, DynamicMainContent } from '@/components/dynamic-loader';
 
 export default function Home() {
   const [isGiftOpened, setIsGiftOpened] = useState(false);
@@ -18,7 +17,7 @@ export default function Home() {
     // Play sound on a user interaction
     // audioRef.current?.play().catch(console.error);
   };
-
+  
   if (!isMounted) {
     return null;
   }
@@ -27,9 +26,9 @@ export default function Home() {
     <main className="flex flex-col items-center justify-center">
       <audio ref={audioRef} src="/sounds/birthday-sound.mp3" loop={false} />
       {!isGiftOpened ? (
-        <GiftBox onOpen={handleGiftOpen} />
+        <DynamicGiftBox onOpen={handleGiftOpen} />
       ) : (
-        <MainContent />
+        <DynamicMainContent />
       )}
     </main>
   );

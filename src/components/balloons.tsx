@@ -94,3 +94,7 @@ export function Balloons() {
     </div>
   );
 }
+
+export function Ballemons() {
+    return <Balloons />
+}
