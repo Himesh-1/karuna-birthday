@@ -64,7 +64,7 @@ export function PresentsSection() {
           Click on the presents a few times!
         </p>
         
-        <div className="mt-12 md:mt-20 flex justify-center items-end gap-8 md:gap-16 flex-wrap">
+        <div className="mt-12 md:mt-20 flex justify-center items-end gap-[50px] md:gap-16 flex-wrap">
           {presents.map((p, i) => (
              <motion.div
                 key={i}
