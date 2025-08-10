@@ -24,7 +24,7 @@ export function MemoriesSection() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {memories.map((memory) => (
-            <Card key={memory.id} className="overflow-hidden shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105 hover:shadow-primary/20">
+            <Card key={memory.id} className="overflow-hidden shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105 hover:shadow-primary/20 animate-zoom-in-out">
               <CardContent className="p-0">
                 <Image
                   src={memory.src}

@@ -1,10 +1,11 @@
 import Image from 'next/image';
 
-const Balloon = ({ className, colorClass }: { className?: string, colorClass: string }) => (
+const Balloon = ({ className, colorClass, style }: { className?: string, colorClass: string, style?: React.CSSProperties }) => (
   <svg
     viewBox="0 0 100 125"
     className={`absolute w-24 h-32 drop-shadow-lg ${className}`}
     xmlns="http://www.w3.org/2000/svg"
+    style={style}
   >
     <path
       d="M50,5C25.1,5,5,25.1,5,50s20.1,45,45,45s45-20.1,45-45S74.9,5,50,5z M50,90C27.9,90,10,72.1,10,50S27.9,10,50,10s40,17.9,40,40S72.1,90,50,90z"
@@ -37,7 +38,7 @@ export function CakeSection() {
   return (
     <section id="cake" className="relative w-full min-h-screen flex flex-col items-center justify-center py-20 px-4 overflow-hidden bg-primary/10">
       <div className="text-center z-10">
-        <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90">
+        <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90 animate-wiggle">
           Have a Slice!
         </h2>
         <p className="mt-4 font-body text-lg text-muted-foreground max-w-md mx-auto">
