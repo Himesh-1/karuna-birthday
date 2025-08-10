@@ -59,8 +59,8 @@ export function GiftBox({ onOpen }: GiftBoxProps) {
           <Image
             src="/images/your-image-1.png"
             alt="A cute teddy bear"
-            width={240}
-            height={300}
+            width={360}
+            height={450}
             className="transform -scale-x-100 animate-bobbing"
             data-ai-hint="teddy bear"
             style={{ animationDelay: '0.2s' }}
@@ -73,8 +73,8 @@ export function GiftBox({ onOpen }: GiftBoxProps) {
         <Image
           src="/images/your-image-2.png"
           alt="A cute teddy bear"
-          width={240}
-          height={300}
+          width={360}
+          height={450}
           className="animate-bobbing"
           data-ai-hint="teddy bear"
         />
