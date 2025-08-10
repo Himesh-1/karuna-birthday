@@ -94,6 +94,11 @@ export function CakeSection() {
   const [message, setMessage] = useState('');
   const [flicker, setFlicker] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const resetGame = () => {
     setClickCount(0);
@@ -106,7 +111,7 @@ export function CakeSection() {
   };
 
   const handleCakeClick = () => {
-    if (candlesOut) return;
+    if (candlesOut || !isMounted) return;
 
     // Trigger flicker animation
     setFlicker(true);
@@ -138,6 +143,7 @@ export function CakeSection() {
   
   // Clear message after a delay
   useEffect(() => {
+    if (!isMounted) return;
     if (message) {
       const messageTimer = setTimeout(() => {
         if (message.includes('Try harder')) {
@@ -146,7 +152,7 @@ export function CakeSection() {
       }, 4000);
       return () => clearTimeout(messageTimer);
     }
-  }, [message]);
+  }, [message, isMounted]);
 
 
   return (
@@ -186,7 +192,7 @@ export function CakeSection() {
              whileInView="visible"
              viewport={{ once: true, amount: 0.5, margin: "100px" }}
           >
-            <CSSCake onCakeClick={handleCakeClick} candlesOut={candlesOut} flicker={flicker}/>
+            {isMounted && <CSSCake onCakeClick={handleCakeClick} candlesOut={candlesOut} flicker={flicker}/>}
           </motion.div>
       </div>
 
