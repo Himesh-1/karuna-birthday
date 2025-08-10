@@ -49,7 +49,7 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
             opacity: 1,
             y: 0,
             transition: {
-                delay: i * 0.3,
+                delay: i * 0.2,
                 duration: 0.8,
                 ease: [0.25, 1, 0.5, 1]
             }
@@ -58,18 +58,15 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
 
     return (
         <div
-            className="relative animate-bobbing cursor-pointer group w-[420px] h-[400px] flex flex-col items-center justify-end"
-            style={{ animationDelay: '1.5s' }}
+            className="relative animate-bobbing group flex flex-col items-center justify-end"
+            style={{ animationDelay: '1.5s', width: '450px', height: '500px' }}
             onClick={onCakeClick}
         >
                 {/* Top Layer */}
                 <CakeLayer
-                    className="w-[300px] h-[100px] bg-rose-200 rounded-2xl shadow-lg z-20"
+                    className="w-[280px] h-[100px] bg-rose-200 rounded-t-2xl shadow-lg z-30"
                     custom={1}
                     variants={layerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
                 >
                     <div className="absolute -bottom-2 w-[102%] h-8 bg-rose-300/50 rounded-full left-1/2 -translate-x-1/2" />
                     <Candle left="30%" animationDelay="0s" isOut={candlesOut} flicker={flicker} />
@@ -79,29 +76,32 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
 
                  {/* Middle Layer */}
                 <CakeLayer
-                    className="w-[350px] h-[120px] bg-purple-300 rounded-2xl shadow-xl z-10"
+                    className="w-[340px] h-[110px] bg-purple-300 rounded-t-2xl shadow-xl z-20"
                     custom={2}
                     variants={layerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
                 >
                     <div className="absolute top-0 w-full h-8 bg-white/50 rounded-t-2xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%)' }} />
                     <div className="absolute -bottom-2 w-[102%] h-8 bg-purple-400/40 rounded-full left-1/2 -translate-x-1/2" />
                 </CakeLayer>
+                
+                {/* Bottom Layer */}
+                <CakeLayer
+                    className="w-[400px] h-[120px] bg-blue-200 rounded-t-2xl shadow-2xl z-10"
+                    custom={3}
+                    variants={layerVariants}
+                >
+                    <div className="absolute -bottom-2 w-[102%] h-8 bg-blue-300/50 rounded-full left-1/2 -translate-x-1/2" />
+                </CakeLayer>
 
                 {/* Base Plate */}
                 <CakeLayer
-                    className="w-full -mt-4"
-                    custom={3}
+                    className="w-full"
+                    custom={4}
                     variants={layerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
                 >
-                    <div className="relative w-full h-[30px] flex items-center justify-center">
-                        <div className="w-[400px] h-[20px] bg-rose-300/80 rounded-full absolute bottom-0 shadow-2xl" />
-                        <div className="w-[420px] h-[20px] bg-gray-200 rounded-full shadow-inner" />
+                    <div className="relative w-full h-[30px] flex items-center justify-center pt-2">
+                        <div className="w-[450px] h-[25px] bg-gray-200 rounded-full shadow-inner" />
+                        <div className="w-[420px] h-[20px] bg-rose-300/80 rounded-full absolute bottom-0 shadow-2xl" />
                     </div>
                 </CakeLayer>
         </div>
@@ -174,7 +174,7 @@ export function CakeSection() {
     <section id="cake" className="relative w-full min-h-screen flex flex-col items-center justify-center py-20 px-4 overflow-hidden bg-gradient-to-br from-purple-50 via-rose-50 to-amber-50">
        <AnimatePresence>
         {candlesOut && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 w-full h-full z-20 pointer-events-none">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 w-full h-full z-40 pointer-events-none">
             <Confetti />
             <Fireworks />
           </motion.div>
@@ -201,8 +201,14 @@ export function CakeSection() {
         </motion.p>
       </div>
       
-      <div className="relative mt-12 w-full min-h-[400px] flex items-center justify-center z-0">
-          <CSSCake onCakeClick={handleCakeClick} candlesOut={candlesOut} flicker={flicker}/>
+      <div className="relative mt-12 w-full flex items-center justify-center z-0">
+          <motion.div
+             initial="hidden"
+             whileInView="visible"
+             viewport={{ once: true, amount: 0.5, margin: "100px" }}
+          >
+            <CSSCake onCakeClick={handleCakeClick} candlesOut={candlesOut} flicker={flicker}/>
+          </motion.div>
       </div>
 
        <AnimatePresence>
