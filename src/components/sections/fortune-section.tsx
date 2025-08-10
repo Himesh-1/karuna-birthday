@@ -39,12 +39,8 @@ const fortunes = [
 const FortuneCard = ({ item, index }) => {
     if (item.id === 'personal') {
         return (
-            <motion.div
+            <div
                 className="fortune-card h-full w-full"
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-                viewport={{ once: true, amount: 0.5 }}
             >
                 <Card className={`relative h-full rounded-2xl shadow-xl overflow-hidden bg-gradient-to-br ${item.color} border-primary/10 backdrop-blur-md`}>
                     <div className="flex flex-col md:flex-row items-center p-6 md:p-8 gap-6 md:gap-8 min-h-[200px]">
@@ -61,18 +57,14 @@ const FortuneCard = ({ item, index }) => {
                         </div>
                     </div>
                 </Card>
-            </motion.div>
+            </div>
         )
     }
 
     return (
         <motion.div
             className="fortune-card h-full"
-            initial={{ opacity: 0, y: 50, scale: 0.9 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             whileHover={{ y: -10, scale: 1.05, transition: { type: 'spring', stiffness: 300 } }}
-            transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.5 }}
         >
             <Card className={`relative h-full rounded-2xl shadow-xl overflow-hidden bg-gradient-to-br ${item.color} border-primary/10 backdrop-blur-md`}>
             <CardHeader className="text-center items-center pb-4">
