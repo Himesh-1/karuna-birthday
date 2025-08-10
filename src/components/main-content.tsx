@@ -11,8 +11,8 @@ import { ArrowDown } from 'lucide-react';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from 'framer-motion';
-import { GuessTheMemorySection } from './sections/guess-the-memory-section';
 import { PresentsSection } from './sections/presents-section';
+import { CalendarSection } from './sections/calendar-section';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,7 +60,7 @@ export function MainContent() {
         >
             <HeroSection />
             <MemoriesSection />
-            <GuessTheMemorySection />
+            <CalendarSection />
             <CakeSection />
             <WishesSection />
             <PresentsSection />
