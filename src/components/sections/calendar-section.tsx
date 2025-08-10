@@ -29,7 +29,7 @@ export function CalendarSection() {
         transition={{ duration: 0.7 }}
         viewport={{ once: true, amount: 0.5 }}
       >
-        <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90">
+        <h2 className="font-headline text-4xl md:text-7xl font-bold text-primary-foreground/90">
           A Date to Remember
         </h2>
         <AnimatePresence mode="wait">
@@ -40,7 +40,7 @@ export function CalendarSection() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="mt-4 font-body text-lg text-muted-foreground"
+              className="mt-4 font-body text-md md:text-lg text-muted-foreground"
             >
               A very important day is coming up... can you spot it?<br/>
               Click on it !!
@@ -49,39 +49,39 @@ export function CalendarSection() {
         </AnimatePresence>
       </motion.div>
 
-      <div className="w-full max-w-6xl mx-auto flex items-center justify-center gap-8 md:gap-16">
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
         <motion.div
           className="w-full md:w-1/2"
-          animate={{ x: isDateClicked ? '-45%' : 0 }}
+          animate={{ x: isDateClicked ? '0%' : 0 }}
           transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         >
           <motion.div
-            className="w-full max-w-md p-6 md:p-8 bg-white/50 backdrop-blur-sm shadow-2xl rounded-2xl border-primary/20 mx-auto"
+            className="w-full max-w-md p-4 md:p-8 bg-white/50 backdrop-blur-sm shadow-2xl rounded-2xl border-primary/20 mx-auto"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             layout
           >
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="font-headline text-3xl text-primary font-bold">August 2025</h3>
+            <div className="flex justify-between items-center mb-4 md:mb-6">
+              <h3 className="font-headline text-2xl md:text-3xl text-primary font-bold">August 2025</h3>
             </div>
-            <div className="grid grid-cols-7 gap-2 text-center font-body">
-              {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+            <div className="grid grid-cols-7 gap-1 md:gap-2 text-center font-body text-sm md:text-base">
+              {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(day => (
                 <div key={day} className="font-bold text-muted-foreground">{day}</div>
               ))}
               {calendarDays.map((day, index) => (
                 <div
                   key={index}
                   onClick={() => handleDayClick(day)}
-                  className={`relative flex items-center justify-center p-2 h-16 rounded-lg transition-all duration-300 ease-in-out
+                  className={`relative flex items-center justify-center p-1 h-12 md:h-16 rounded-lg transition-all duration-300 ease-in-out
                     ${day ? 'bg-card/40 hover:bg-primary/20' : 'bg-transparent'}
                     ${day === 11 ? 'cursor-pointer !bg-accent/80 text-accent-foreground font-bold group animate-zoom-in-out' : ''}
                   `}
                 >
                   {day}
                   {day === 11 && !isDateClicked && (
-                    <Heart className="absolute w-6 h-6 text-white/80 transition-transform duration-500 group-hover:scale-125" />
+                    <Heart className="absolute w-4 h-4 md:w-6 md:h-6 text-white/80 transition-transform duration-500 group-hover:scale-125" />
                   )}
                 </div>
               ))}
@@ -92,17 +92,16 @@ export function CalendarSection() {
         <AnimatePresence>
           {isDateClicked && (
             <motion.div
-              className="w-1/2 text-left absolute right-0"
-              initial={{ opacity: 0, scale: 0.8, x: 100 }}
+              className="w-full md:w-1/2 text-center md:text-left mt-8 md:mt-0"
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{ 
                 opacity: 1, 
                 scale: 1,
-                x: 0,
-                transition: { delay: 0.4, duration: 0.8, ease: [0.4, 0, 0.2, 1] } 
+                transition: { delay: 0.2, duration: 0.8, ease: [0.4, 0, 0.2, 1] } 
               }}
               exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.3 } }}
             >
-              <p className="text-4xl md:text-6xl font-bold font-headline text-primary animate-wiggle">
+              <p className="text-3xl md:text-6xl font-bold font-headline text-primary animate-wiggle">
                 Congratulations you are one year older now, Yayy!!! 🎉
               </p>
             </motion.div>

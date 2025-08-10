@@ -25,7 +25,7 @@ const Candle = ({ left, animationDelay, isOut, flicker }: { left: string, animat
             opacity: flicker ? [1, 0.9, 1, 0.85, 1] : 1,
             transition: { duration: 0.15, ease: "easeInOut" }
           }}
-          className="w-3 h-5 bg-amber-400 rounded-t-full origin-bottom"
+          className="w-2 md:w-3 h-3 md:h-5 bg-amber-400 rounded-t-full origin-bottom"
           style={{ 
             boxShadow: '0 0 10px 2px #fef08a, 0 0 20px 4px #fca5a5',
             animation: !flicker ? 'flame 1.5s ease-in-out infinite' : 'none',
@@ -34,7 +34,7 @@ const Candle = ({ left, animationDelay, isOut, flicker }: { left: string, animat
         />
       )}
     </AnimatePresence>
-    <div className="w-4 h-16 bg-pink-300 border-2 border-pink-400/50 rounded-t-lg" style={{
+    <div className="w-3 md:w-4 h-12 md:h-16 bg-pink-300 border-2 border-pink-400/50 rounded-t-lg" style={{
         backgroundImage: 'linear-gradient(45deg, rgba(255,255,255,0.3) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.3) 75%, transparent 75%, transparent)'
     }} />
   </div>
@@ -43,30 +43,15 @@ const Candle = ({ left, animationDelay, isOut, flicker }: { left: string, animat
 
 const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void, candlesOut: boolean, flicker: boolean }) => {
 
-    const layerVariants = {
-        hidden: { opacity: 0, y: -100 },
-        visible: (i: number) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: i * 0.2,
-                duration: 0.8,
-                ease: [0.25, 1, 0.5, 1]
-            }
-        })
-    };
-
     return (
         <div
-            className="relative animate-bobbing group flex flex-col items-center justify-end"
+            className="relative animate-bobbing group flex flex-col items-center justify-end scale-75 md:scale-100"
             style={{ animationDelay: '1.5s', width: '450px', height: '500px' }}
             onClick={onCakeClick}
         >
                 {/* Top Layer */}
                 <CakeLayer
                     className="w-[280px] h-[100px] bg-rose-200 rounded-t-2xl shadow-lg z-30"
-                    custom={1}
-                    variants={layerVariants}
                 >
                     <div className="absolute -bottom-2 w-[102%] h-8 bg-rose-300/50 rounded-full left-1/2 -translate-x-1/2" />
                     <Candle left="30%" animationDelay="0s" isOut={candlesOut} flicker={flicker} />
@@ -77,8 +62,6 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
                  {/* Middle Layer */}
                 <CakeLayer
                     className="w-[340px] h-[110px] bg-purple-300 rounded-t-2xl shadow-xl z-20"
-                    custom={2}
-                    variants={layerVariants}
                 >
                     <div className="absolute top-0 w-full h-8 bg-white/50 rounded-t-2xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%)' }} />
                     <div className="absolute -bottom-2 w-[102%] h-8 bg-purple-400/40 rounded-full left-1/2 -translate-x-1/2" />
@@ -87,8 +70,6 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
                 {/* Bottom Layer */}
                 <CakeLayer
                     className="w-[400px] h-[120px] bg-blue-200 rounded-t-2xl shadow-2xl z-10"
-                    custom={3}
-                    variants={layerVariants}
                 >
                     <div className="absolute -bottom-2 w-[102%] h-8 bg-blue-300/50 rounded-full left-1/2 -translate-x-1/2" />
                 </CakeLayer>
@@ -96,8 +77,6 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
                 {/* Base Plate */}
                 <CakeLayer
                     className="w-full"
-                    custom={4}
-                    variants={layerVariants}
                 >
                     <div className="relative w-full h-[30px] flex items-center justify-center pt-2">
                         <div className="w-[450px] h-[25px] bg-gray-200 rounded-full shadow-inner" />
@@ -182,7 +161,7 @@ export function CakeSection() {
       </AnimatePresence>
       <div className="text-center z-10">
         <motion.h2 
-          className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90"
+          className="font-headline text-4xl md:text-7xl font-bold text-primary-foreground/90"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -191,7 +170,7 @@ export function CakeSection() {
           Have a Slice!
         </motion.h2>
         <motion.p 
-          className="mt-4 font-body text-lg text-muted-foreground max-w-md mx-auto"
+          className="mt-4 font-body text-md md:text-lg text-muted-foreground max-w-md mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -201,7 +180,7 @@ export function CakeSection() {
         </motion.p>
       </div>
       
-      <div className="relative mt-12 w-full flex items-center justify-center z-0">
+      <div className="relative mt-4 md:mt-12 w-full flex items-center justify-center z-0">
           <motion.div
              initial="hidden"
              whileInView="visible"
@@ -219,7 +198,7 @@ export function CakeSection() {
                     exit={{ opacity: 0, y: 20 }}
                     className="mt-8 text-center z-10"
                 >
-                    <p className={`text-3xl font-bold font-body ${candlesOut ? 'text-green-600' : 'text-destructive'}`}>{message}</p>
+                    <p className={`text-xl md:text-3xl font-bold font-body ${candlesOut ? 'text-green-600' : 'text-destructive'}`}>{message}</p>
                     {message.includes('Try harder') && (
                          <Button onClick={resetGame} className="mt-4">Try Again</Button>
                     )}

@@ -71,10 +71,10 @@ const FortuneCard = ({ item, index }) => {
                 <div className="p-4 bg-white/20 rounded-full mb-4 border border-white/30">
                     <item.icon className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle className="font-headline text-3xl text-primary-foreground/90">{item.title}</CardTitle>
+                <CardTitle className="font-headline text-2xl md:text-3xl text-primary-foreground/90">{item.title}</CardTitle>
             </CardHeader>
             <CardContent>
-                <p className="font-body text-center text-muted-foreground text-lg leading-relaxed">
+                <p className="font-body text-center text-muted-foreground md:text-lg leading-relaxed">
                 "{item.fortune}"
                 </p>
             </CardContent>
@@ -90,11 +90,11 @@ export function FortuneSection() {
   return (
     <section id="fortune" className="w-full bg-transparent py-24 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-headline text-4xl md:text-7xl font-bold text-primary-foreground/90">
             A Glimpse Into Your Future
           </h2>
-          <p className="mt-4 font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-4 font-body text-md md:text-lg text-muted-foreground max-w-2xl mx-auto">
             The stars have aligned to offer a peek at the wonderful things coming your way.
           </p>
         </div>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent } from '@/components/ui/card';
@@ -49,11 +50,11 @@ export function WishesSection() {
   return (
     <section id="wishes" className="w-full bg-transparent py-24 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-headline text-4xl md:text-7xl font-bold text-primary-foreground/90">
             Birthday Wishes
           </h2>
-          <p className="mt-4 font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="mt-4 font-body text-md md:text-lg text-muted-foreground max-w-2xl mx-auto">
             A few words from friends to celebrate your special day!
           </p>
         </div>
@@ -70,9 +71,9 @@ export function WishesSection() {
             >
               <Card className="bg-card/60 border-primary/20 shadow-xl h-full backdrop-blur-md rounded-2xl">
                 <CardContent className="p-6 flex flex-col h-full">
-                  <Quote className="w-10 h-10 text-primary/30 mb-4" />
+                  <Quote className="w-8 h-8 md:w-10 md:h-10 text-primary/30 mb-4" />
                   <p className="font-body text-muted-foreground italic mb-6 flex-grow">"{wish.message}"</p>
-                  <p className="font-headline text-right text-primary font-bold text-xl">- {wish.name}</p>
+                  <p className="font-headline text-right text-primary font-bold text-lg md:text-xl">- {wish.name}</p>
                 </CardContent>
               </Card>
             </motion.div>

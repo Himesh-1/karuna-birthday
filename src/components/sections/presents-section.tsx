@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Present = ({ color, ribbonColor, onClick }: { color: string, ribbonColor: string, onClick: () => void }) => {
   return (
     <div 
-      className="relative cursor-pointer group animate-bobbing"
+      className="relative cursor-pointer group animate-bobbing scale-75 md:scale-100"
       style={{ width: '150px', height: '150px' }}
       onClick={onClick}
     >
@@ -57,14 +57,14 @@ export function PresentsSection() {
   return (
     <section id="presents" className="w-full bg-transparent py-24 px-4 md:px-8">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90">
+        <h2 className="font-headline text-4xl md:text-7xl font-bold text-primary-foreground/90">
           One Last Thing...
         </h2>
-        <p className="mt-4 font-body text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="mt-4 font-body text-md md:text-lg text-muted-foreground max-w-2xl mx-auto">
           Click on the presents a few times!
         </p>
         
-        <div className="mt-20 flex justify-center items-end gap-8 md:gap-16 flex-wrap">
+        <div className="mt-12 md:mt-20 flex justify-center items-end gap-2 md:gap-16 flex-wrap">
           {presents.map((p, i) => (
              <motion.div
                 key={i}
@@ -86,10 +86,10 @@ export function PresentsSection() {
               exit={{ opacity: 0, y: 20 }}
               className="mt-16 text-center z-10"
             >
-              <p className="text-2xl md:text-3xl font-bold font-headline text-primary">
+              <p className="text-xl md:text-3xl font-bold font-headline text-primary">
                 Some surprises are best kept as surprises...
               </p>
-              <p className="mt-2 text-xl md:text-2xl font-body text-muted-foreground">
+              <p className="mt-2 text-lg md:text-2xl font-body text-muted-foreground">
                 See you soon! ❤️
               </p>
             </motion.div>

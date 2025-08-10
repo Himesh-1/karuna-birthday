@@ -1,3 +1,4 @@
+
 import { Confetti } from '@/components/confetti';
 import { Button } from '@/components/ui/button';
 import { ArrowDown } from 'lucide-react';
@@ -9,7 +10,7 @@ export function HeroSection() {
       <Confetti />
       <div className="z-10">
         <motion.h1 
-          className="font-headline text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter"
+          className="font-headline text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -20,12 +21,12 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.5, type: 'spring', stiffness: 100 }}
-            className="font-headline text-7xl md:text-9xl lg:text-[10rem] font-extrabold"
+            className="font-headline text-6xl md:text-9xl lg:text-[10rem] font-extrabold"
         >
           <motion.span whileHover={{ scale: 1.1, rotate: -2 }} className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Karuna!</motion.span>
         </motion.div>
         <motion.p 
-            className="mt-4 font-body text-lg text-muted-foreground"
+            className="mt-4 font-body text-md md:text-lg text-muted-foreground"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.2 }}
@@ -35,8 +36,8 @@ export function HeroSection() {
       </div>
       <div className="absolute bottom-10 z-10 animate-bounce">
         <Button variant="ghost" asChild>
-            <a href="#memories">
-                Scroll for memories
+            <a href="#fortune">
+                Scroll for more
                 <ArrowDown className="ml-2 h-4 w-4" />
             </a>
         </Button>
