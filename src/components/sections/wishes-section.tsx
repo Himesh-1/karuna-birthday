@@ -60,7 +60,7 @@ export function WishesSection() {
               <Card className="bg-card/60 border-primary/20 shadow-xl h-full backdrop-blur-md rounded-2xl">
                 <CardContent className="p-6 flex flex-col h-full">
                   <Quote className="w-8 h-8 md:w-10 md:h-10 text-primary/30 mb-4" />
-                  <p className="font-body text-muted-foreground italic mb-6 flex-grow">"{wish.message}"</p>
+                  <p className="font-body text-lg text-muted-foreground italic mb-6 flex-grow">"{wish.message}"</p>
                   <p className="font-headline text-right text-primary font-bold text-lg md:text-xl">- {wish.name}</p>
                 </CardContent>
               </Card>
