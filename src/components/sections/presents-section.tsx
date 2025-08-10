@@ -60,11 +60,11 @@ export function PresentsSection() {
         <h2 className="font-headline text-4xl md:text-7xl font-bold text-primary-foreground/90">
           One Last Thing...
         </h2>
-        <p className="mt-4 font-body text-md md:text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="font-body text-md md:text-lg text-muted-foreground max-w-2xl mx-auto">
           Click on the presents a few times!
         </p>
         
-        <div className="mt-12 md:mt-20 flex justify-center items-end gap-[50px] md:gap-16 flex-wrap">
+        <div className="mt-12 md:mt-20 flex justify-center items-end gap-[100px] md:gap-16 flex-wrap">
           {presents.map((p, i) => (
              <motion.div
                 key={i}
