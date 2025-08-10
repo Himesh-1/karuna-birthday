@@ -1,7 +1,7 @@
 "use client";
 
 import { HeroSection } from '@/components/sections/hero-section';
-import { MemoriesSection } from '@/components/sections/memories-section';
+import { FortuneSection } from '@/components/sections/fortune-section';
 import { CakeSection } from '@/components/sections/cake-section';
 import { WishesSection } from '@/components/sections/wishes-section';
 import { FinaleSection } from '@/components/sections/finale-section';
@@ -37,9 +37,9 @@ export function MainContent() {
         });
 
         // Fun animations for specific elements
-        gsap.from(".memory-card", {
+        gsap.from(".fortune-card", {
             scrollTrigger: {
-                trigger: "#memories",
+                trigger: "#fortune",
                 start: "top 80%",
             },
             y: 50,
@@ -59,7 +59,7 @@ export function MainContent() {
             className="w-full"
         >
             <HeroSection />
-            <MemoriesSection />
+            <FortuneSection />
             <CalendarSection />
             <CakeSection />
             <WishesSection />
@@ -67,7 +67,7 @@ export function MainContent() {
             <FinaleSection />
             <div className="fixed bottom-5 right-5 z-50 animate-bounce">
                 <Button variant="ghost" size="icon" asChild className="bg-background/50 rounded-full hover:bg-primary/20">
-                    <a href="#memories">
+                    <a href="#fortune">
                         <ArrowDown className="h-5 w-5 text-primary" />
                     </a>
                 </Button>

@@ -103,7 +103,7 @@ export function CalendarSection() {
               exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.3 } }}
             >
               <p className="text-4xl md:text-6xl font-bold font-headline text-primary animate-wiggle">
-                Congratulations you are one year older now yayy! 🎉
+                Congratulations you are one year older now, Yayy!!! 🎉
               </p>
             </motion.div>
           )}

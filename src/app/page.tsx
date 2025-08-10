@@ -10,7 +10,7 @@ export default function Home() {
   const handleGiftOpen = () => {
     setIsGiftOpened(true);
     // Play sound on a user interaction
-    audioRef.current?.play().catch(console.error);
+    // audioRef.current?.play().catch(console.error);
   };
 
   return (
