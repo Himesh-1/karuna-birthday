@@ -8,7 +8,7 @@ export function HeroSection() {
       <Confetti />
       <div className="z-10">
         <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter">
-          <span className="text-primary/80">Happy</span> <span className="text-primary">Birthday,</span>
+          <span className="text-primary/80 inline-block transition-transform duration-300 hover:scale-110 hover:rotate-[-3deg]">Happy</span> <span className="text-primary inline-block transition-transform duration-300 hover:scale-110 hover:rotate-[3deg]">Birthday,</span>
         </h1>
         <p className="font-headline text-7xl md:text-9xl lg:text-[10rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent animate-pulse">
           Karuna!

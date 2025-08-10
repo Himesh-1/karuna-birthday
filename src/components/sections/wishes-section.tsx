@@ -36,7 +36,7 @@ export function WishesSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {wishes.map((wish, index) => (
-            <Card key={index} className="bg-primary/5 border-primary/20 shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
+            <Card key={index} className="bg-primary/5 border-primary/20 shadow-lg hover:shadow-primary/20 transition-all duration-300 hover:scale-105 hover:rotate-[-1deg]">
               <CardContent className="p-6">
                 <Quote className="w-8 h-8 text-primary/40 mb-4" />
                 <p className="font-body text-muted-foreground italic mb-4">"{wish.message}"</p>
