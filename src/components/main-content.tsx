@@ -12,6 +12,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from 'framer-motion';
 import { GuessTheMemorySection } from './sections/guess-the-memory-section';
+import { PresentsSection } from './sections/presents-section';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,6 +63,7 @@ export function MainContent() {
             <GuessTheMemorySection />
             <CakeSection />
             <WishesSection />
+            <PresentsSection />
             <FinaleSection />
             <div className="fixed bottom-5 right-5 z-50 animate-bounce">
                 <Button variant="ghost" size="icon" asChild className="bg-background/50 rounded-full hover:bg-primary/20">
