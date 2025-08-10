@@ -219,7 +219,7 @@ export function CakeSection() {
                     exit={{ opacity: 0, y: 20 }}
                     className="mt-8 text-center z-10"
                 >
-                    <p className={`text-xl font-bold font-body ${candlesOut ? 'text-green-600' : 'text-destructive'}`}>{message}</p>
+                    <p className={`text-3xl font-bold font-body ${candlesOut ? 'text-green-600' : 'text-destructive'}`}>{message}</p>
                     {message.includes('Try harder') && (
                          <Button onClick={resetGame} className="mt-4">Try Again</Button>
                     )}
