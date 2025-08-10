@@ -11,8 +11,15 @@ const Firework = ({ style }) => (
 
 export function Fireworks() {
   const [fireworks, setFireworks] = useState([]);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     const createFirework = () => {
       const newFirework = {
         id: Date.now() + Math.random(),
@@ -40,7 +47,9 @@ export function Fireworks() {
 
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isMounted]);
+
+  if (!isMounted) return null;
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">

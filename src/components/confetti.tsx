@@ -9,8 +9,16 @@ type ConfettiPiece = {
 
 export function Confetti() {
   const [pieces, setPieces] = useState<ConfettiPiece[]>([]);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+
+  useEffect(() => {
+    if (!isMounted) return;
+    
     const newConfetti = Array.from({ length: 3000 }).map(() => ({
       style: {
         '--confetti-end-x': `${(Math.random() - 0.5) * 90}vw`,
@@ -25,7 +33,9 @@ export function Confetti() {
       } as React.CSSProperties,
     }));
     setPieces(newConfetti);
-  }, []);
+  }, [isMounted]);
+
+  if (!isMounted) return null;
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
