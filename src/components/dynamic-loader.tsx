@@ -12,6 +12,6 @@ const createDynamicComponent = (loader: () => Promise<any>, height: string = '10
   });
 };
 
-export const DynamicBalloons = createDynamicComponent(() => import('./balloons').then(mod => mod.Balloemons));
+export const DynamicBalloons = createDynamicComponent(() => import('./balloons').then(mod => mod.Balloons));
 export const DynamicGiftBox = createDynamicComponent(() => import('./gift-box').then(mod => mod.GiftBox));
 export const DynamicMainContent = createDynamicComponent(() => import('./main-content').then(mod => mod.MainContent));
