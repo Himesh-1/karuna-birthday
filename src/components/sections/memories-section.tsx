@@ -12,10 +12,10 @@ const memories = [
 
 export function MemoriesSection() {
   return (
-    <section id="memories" className="w-full bg-background py-20 px-4 md:px-8">
+    <section id="memories" className="w-full bg-gradient-to-b from-background to-indigo-50 py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90">
+          <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90 animate-wiggle" style={{ animationDelay: '1s' }}>
             A Walk Down Memory Lane
           </h2>
           <p className="mt-4 font-body text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -24,7 +24,7 @@ export function MemoriesSection() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {memories.map((memory) => (
-            <Card key={memory.id} className="overflow-hidden shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-105 hover:shadow-primary/20 animate-zoom-in-out">
+            <Card key={memory.id} className="memory-card overflow-hidden shadow-lg transition-all duration-500 ease-in-out hover:shadow-2xl hover:scale-105 hover:shadow-primary/30 border-primary/20 bg-white/50 backdrop-blur-sm">
               <CardContent className="p-0">
                 <Image
                   src={memory.src}

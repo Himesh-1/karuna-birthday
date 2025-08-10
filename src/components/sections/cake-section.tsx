@@ -1,62 +1,44 @@
-import Image from 'next/image';
+"use client";
 
-const Balloon = ({ className, colorClass, style }: { className?: string, colorClass: string, style?: React.CSSProperties }) => (
-  <svg
-    viewBox="0 0 100 125"
-    className={`absolute w-24 h-32 drop-shadow-lg ${className}`}
-    xmlns="http://www.w3.org/2000/svg"
-    style={style}
-  >
-    <path
-      d="M50,5C25.1,5,5,25.1,5,50s20.1,45,45,45s45-20.1,45-45S74.9,5,50,5z M50,90C27.9,90,10,72.1,10,50S27.9,10,50,10s40,17.9,40,40S72.1,90,50,90z"
-      className={`${colorClass} opacity-80`}
-      fill="currentColor"
-    />
-    <path
-      d="M50,100c-2.8,0-5,2.2-5,5s2.2,5,5,5s5-2.2,5-5S52.8,100,50,100z"
-      className={`${colorClass} opacity-80`}
-      fill="currentColor"
-    />
-    <path
-      d="M48.5,115h3c0.6,0,1-0.4,1-1v-14c0-0.6-0.4-1-1-1h-3c-0.6,0-1,0.4-1,1v14C47.5,114.6,47.9,115,48.5,115z"
-      className={`${colorClass} opacity-80`}
-      fill="currentColor"
-    />
-    <path 
-      d="M 65 25 C 60 20, 50 20, 40 30 C 35 35, 35 45, 40 50" 
-      fill="none" 
-      stroke="white" 
-      strokeWidth="2" 
-      strokeLinecap="round"
-      className="opacity-50"
-    />
-  </svg>
-);
-
+import React, { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Stage } from '@react-three/drei';
+import { CakeModel } from '@/components/cake-model';
+import { motion } from 'framer-motion';
 
 export function CakeSection() {
   return (
-    <section id="cake" className="relative w-full min-h-screen flex flex-col items-center justify-center py-20 px-4 overflow-hidden bg-primary/10">
+    <section id="cake" className="relative w-full min-h-screen flex flex-col items-center justify-center py-20 px-4 overflow-hidden bg-gradient-to-br from-purple-50 via-rose-50 to-amber-50">
       <div className="text-center z-10">
-        <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90 animate-wiggle">
+        <motion.h2 
+          className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           Have a Slice!
-        </h2>
-        <p className="mt-4 font-body text-lg text-muted-foreground max-w-md mx-auto">
+        </motion.h2>
+        <motion.p 
+          className="mt-4 font-body text-lg text-muted-foreground max-w-md mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        >
           Here's a little something sweet to celebrate your special day. Make a wish!
-        </p>
+        </motion.p>
       </div>
       
-      <div className="relative mt-12 flex items-center justify-center z-10">
-        <div className="animate-bobbing">
-          <Image
-            src="https://placehold.co/400x400.png"
-            alt="A delicious birthday cake"
-            width={400}
-            height={400}
-            className="rounded-full shadow-2xl object-cover border-8 border-background"
-            data-ai-hint="birthday cake"
-          />
-        </div>
+      <div className="relative mt-2 w-full h-[400px] md:h-[500px] flex items-center justify-center z-0 animate-zoom-in-out">
+        <Canvas camera={{ fov: 45, position: [0, 2, 8] }}>
+          <Suspense fallback={null}>
+            <Stage environment="city" intensity={0.6}>
+              <CakeModel />
+            </Stage>
+          </Suspense>
+          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
+        </Canvas>
       </div>
     </section>
   );

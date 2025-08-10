@@ -9,11 +9,12 @@ export default function Home() {
 
   const handleGiftOpen = () => {
     setIsGiftOpened(true);
+    // Play sound on a user interaction
     audioRef.current?.play().catch(console.error);
   };
 
   return (
-    <main className="flex flex-col items-center justify-center">
+    <main className="flex flex-col items-center justify-center bg-background">
       <audio ref={audioRef} src="/sounds/birthday-sound.mp3" loop={false} />
       {!isGiftOpened ? (
         <GiftBox onOpen={handleGiftOpen} />
