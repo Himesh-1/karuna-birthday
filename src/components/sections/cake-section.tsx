@@ -79,7 +79,7 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
 
                  {/* Middle Layer */}
                 <CakeLayer
-                    className="w-[350px] h-[120px] bg-purple-300 rounded-2xl shadow-xl -mb-4 z-10"
+                    className="w-[350px] h-[120px] bg-purple-300 rounded-2xl shadow-xl z-10"
                     custom={2}
                     variants={layerVariants}
                     initial="hidden"
@@ -92,7 +92,7 @@ const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void
 
                 {/* Base Plate */}
                 <CakeLayer
-                    className="w-full"
+                    className="w-full -mt-4"
                     custom={3}
                     variants={layerVariants}
                     initial="hidden"
