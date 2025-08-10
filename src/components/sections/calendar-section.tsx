@@ -1,12 +1,17 @@
 
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Heart } from 'lucide-react';
 
 export function CalendarSection() {
   const [isDateClicked, setIsDateClicked] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // August 2025: First day is a Friday. 31 days.
   const calendarDays = [
@@ -19,6 +24,10 @@ export function CalendarSection() {
       setIsDateClicked(true);
     }
   };
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <section id="calendar" className="w-full bg-transparent py-24 px-4 md:px-8 flex flex-col items-center justify-center min-h-screen overflow-hidden">
