@@ -52,7 +52,7 @@ export function CalendarSection() {
       <div className="w-full max-w-6xl mx-auto flex items-center justify-center gap-8 md:gap-16">
         <motion.div
           className="w-full md:w-1/2"
-          animate={{ x: isDateClicked ? '-40%' : 0 }}
+          animate={{ x: isDateClicked ? '-45%' : 0 }}
           transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         >
           <motion.div
