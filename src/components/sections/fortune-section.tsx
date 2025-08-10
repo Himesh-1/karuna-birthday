@@ -32,10 +32,38 @@ const fortunes = [
   },
 ];
 
+const FortuneCard = ({ item, index }) => (
+    <motion.div
+        className="fortune-card h-full"
+        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        whileHover={{ y: -10, scale: 1.05, transition: { type: 'spring', stiffness: 300 } }}
+        transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.5 }}
+    >
+        <Card className={`relative h-full rounded-2xl shadow-xl overflow-hidden bg-gradient-to-br ${item.color} border-primary/10 backdrop-blur-md`}>
+        <CardHeader className="text-center items-center pb-4">
+            <div className="p-4 bg-white/20 rounded-full mb-4 border border-white/30">
+                <item.icon className="w-8 h-8 text-white" />
+            </div>
+            <CardTitle className="font-headline text-3xl text-primary-foreground/90">{item.title}</CardTitle>
+        </CardHeader>
+        <CardContent>
+            <p className="font-body text-center text-muted-foreground text-lg leading-relaxed">
+            "{item.fortune}"
+            </p>
+        </CardContent>
+        </Card>
+    </motion.div>
+);
+
 export function FortuneSection() {
+  const topFortunes = fortunes.slice(0, 3);
+  const bottomFortune = fortunes[3];
+
   return (
     <section id="fortune" className="w-full bg-transparent py-24 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90">
             A Glimpse Into Your Future
@@ -44,32 +72,16 @@ export function FortuneSection() {
             The stars have aligned to offer a peek at the wonderful things coming your way.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          {fortunes.map((item, index) => (
-            <motion.div
-              key={index}
-              className="fortune-card"
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              whileHover={{ y: -10, scale: 1.05, transition: { type: 'spring', stiffness: 300 } }}
-              transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.5 }}
-            >
-              <Card className={`relative h-full rounded-2xl shadow-xl overflow-hidden bg-gradient-to-br ${item.color} border-primary/10 backdrop-blur-md`}>
-                <CardHeader className="text-center items-center pb-4">
-                  <div className="p-4 bg-white/20 rounded-full mb-4 border border-white/30">
-                     <item.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <CardTitle className="font-headline text-3xl text-primary-foreground/90">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="font-body text-center text-muted-foreground text-lg leading-relaxed">
-                    "{item.fortune}"
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          {topFortunes.map((item, index) => (
+            <FortuneCard key={index} item={item} index={index} />
           ))}
+        </div>
+        
+        <div className="mt-8 md:mt-12 flex justify-center">
+            <div className="w-full md:w-1/3">
+                 <FortuneCard item={bottomFortune} index={3} />
+            </div>
         </div>
       </div>
     </section>
