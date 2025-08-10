@@ -7,10 +7,10 @@ import { Button } from '../ui/button';
 import { Confetti } from '../confetti';
 import { Fireworks } from '../fireworks';
 
-const CakeLayer = ({ className, children }: { className?: string, children?: React.ReactNode }) => (
-  <div className={`relative ${className}`}>
+const CakeLayer = ({ className, children, ...props }: { className?: string, children?: React.ReactNode, [key: string]: any }) => (
+  <motion.div className={`relative ${className}`} {...props}>
     {children}
-  </div>
+  </motion.div>
 );
 
 const Candle = ({ left, animationDelay, isOut, flicker }: { left: string, animationDelay: string, isOut: boolean, flicker: boolean }) => (
@@ -41,29 +41,72 @@ const Candle = ({ left, animationDelay, isOut, flicker }: { left: string, animat
 );
 
 
-const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void, candlesOut: boolean, flicker: boolean }) => (
-  <div
-    className="relative animate-bobbing cursor-pointer group"
-    style={{ animationDelay: '0.5s', width: '350px', height: '350px' }}
-    onClick={onCakeClick}
-  >
-      {/* Top Layer */}
-      <CakeLayer className="w-[300px] h-[100px] bg-rose-200 rounded-2xl shadow-lg absolute bottom-[200px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform">
-          <div className="absolute -bottom-2 w-[102%] h-8 bg-rose-300/50 rounded-full left-1/2 -translate-x-1/2" />
-          <Candle left="30%" animationDelay="0s" isOut={candlesOut} flicker={flicker} />
-          <Candle left="50%" animationDelay="0.2s" isOut={candlesOut} flicker={flicker} />
-          <Candle left="70%" animationDelay="0.4s" isOut={candlesOut} flicker={flicker} />
-      </CakeLayer>
-      {/* Middle Layer */}
-      <CakeLayer className="w-[350px] h-[120px] bg-purple-300 rounded-2xl shadow-xl absolute bottom-[80px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform">
-          <div className="absolute top-0 w-full h-8 bg-white/50 rounded-t-2xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%)' }} />
-          <div className="absolute -bottom-2 w-[102%] h-8 bg-purple-400/40 rounded-full left-1/2 -translate-x-1/2" />
-      </CakeLayer>
-      {/* Base Plate */}
-      <div className="w-[400px] h-[20px] bg-rose-300/80 rounded-full absolute bottom-[70px] left-1/2 -translate-x-1/2 shadow-2xl" />
-      <div className="w-[420px] h-[20px] bg-gray-200 rounded-full absolute bottom-[55px] left-1/2 -translate-x-1/2 shadow-inner" />
-  </div>
-);
+const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void, candlesOut: boolean, flicker: boolean }) => {
+
+    const layerVariants = {
+        hidden: { opacity: 0, y: -100 },
+        visible: (i: number) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: i * 0.3,
+                duration: 0.8,
+                ease: [0.25, 1, 0.5, 1]
+            }
+        })
+    };
+
+    return (
+        <div
+            className="relative animate-bobbing cursor-pointer group w-[420px] h-[400px]"
+            style={{ animationDelay: '1.5s' }}
+            onClick={onCakeClick}
+        >
+            <div className="relative w-full h-full">
+                {/* Base Plate */}
+                <CakeLayer
+                    className="absolute bottom-[55px] left-1/2 -translate-x-1/2"
+                    custom={3}
+                    variants={layerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                >
+                    <div className="w-[400px] h-[20px] bg-rose-300/80 rounded-full absolute bottom-[15px] shadow-2xl" />
+                    <div className="w-[420px] h-[20px] bg-gray-200 rounded-full shadow-inner" />
+                </CakeLayer>
+
+                 {/* Middle Layer */}
+                <CakeLayer
+                    className="w-[350px] h-[120px] bg-purple-300 rounded-2xl shadow-xl absolute bottom-[90px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform"
+                    custom={2}
+                    variants={layerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                >
+                    <div className="absolute top-0 w-full h-8 bg-white/50 rounded-t-2xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%)' }} />
+                    <div className="absolute -bottom-2 w-[102%] h-8 bg-purple-400/40 rounded-full left-1/2 -translate-x-1/2" />
+                </CakeLayer>
+
+                {/* Top Layer */}
+                <CakeLayer
+                    className="w-[300px] h-[100px] bg-rose-200 rounded-2xl shadow-lg absolute bottom-[210px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform"
+                    custom={1}
+                    variants={layerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                >
+                    <div className="absolute -bottom-2 w-[102%] h-8 bg-rose-300/50 rounded-full left-1/2 -translate-x-1/2" />
+                    <Candle left="30%" animationDelay="0s" isOut={candlesOut} flicker={flicker} />
+                    <Candle left="50%" animationDelay="0.2s" isOut={candlesOut} flicker={flicker} />
+                    <Candle left="70%" animationDelay="0.4s" isOut={candlesOut} flicker={flicker} />
+                </CakeLayer>
+            </div>
+        </div>
+    );
+};
 
 
 export function CakeSection() {
