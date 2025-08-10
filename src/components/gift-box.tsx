@@ -55,12 +55,12 @@ export function GiftBox({ onOpen }: GiftBoxProps) {
         <p className="font-body text-muted-foreground mt-2">Click the gift to open it</p>
       </div>
 
-      <div className="flex items-end justify-center gap-4">
+      <div className="flex items-end justify-center gap-8">
           <Image
-            src="https://placehold.co/200x250.png"
+            src="/images/your-image-1.png"
             alt="A cute teddy bear"
-            width={200}
-            height={250}
+            width={240}
+            height={300}
             className="transform -scale-x-100 animate-bobbing"
             data-ai-hint="teddy bear"
             style={{ animationDelay: '0.2s' }}
@@ -71,10 +71,10 @@ export function GiftBox({ onOpen }: GiftBoxProps) {
         </div>
 
         <Image
-          src="https://placehold.co/200x250.png"
+          src="/images/your-image-2.png"
           alt="A cute teddy bear"
-          width={200}
-          height={250}
+          width={240}
+          height={300}
           className="animate-bobbing"
           data-ai-hint="teddy bear"
         />
