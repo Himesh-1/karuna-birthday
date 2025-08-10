@@ -60,9 +60,9 @@ export function GiftBox({ onOpen }: GiftBoxProps) {
           <Image
             src="/images/your-image-1.png"
             alt="A cute teddy bear"
-            width={200}
-            height={250}
-            className="transform md:-scale-x-100 animate-bobbing order-1 w-[120px] md:w-[200px] h-auto"
+            width={300}
+            height={375}
+            className="transform md:-scale-x-100 animate-bobbing order-1 w-[180px] md:w-[300px] h-auto"
             data-ai-hint="lion waving"
             style={{ animationDelay: '0.2s' }}
           />
@@ -74,9 +74,9 @@ export function GiftBox({ onOpen }: GiftBoxProps) {
         <Image
           src="/images/your-image-2.png"
           alt="A cute teddy bear"
-          width={200}
-          height={250}
-          className="animate-bobbing order-3 w-[120px] md:w-[200px] h-auto"
+          width={300}
+          height={375}
+          className="animate-bobbing order-3 w-[180px] md:w-[300px] h-auto"
           data-ai-hint="bear honey"
         />
       </div>
