@@ -15,8 +15,8 @@ const wishes = [
     message: 'Happy Birthday to the one I share endless, uncontrollable laughs with  you are sweet, kind, and yes… pretty too😅🫠🫶 You\’ll always have a special place in my heart Happy Birthday Kajal🫂❤ I wish you get everything your heart desires and may you always stay happy🌟',
   },
   {
-    name: ' ',
-    message: 'Happy Birthday, Karuna! 🎉 Wishing you lots of smiles, sweet surprises, and everything that makes your day feel special. Here’s to a year full of good vibes and happy moments!',
+    name: 'Bhoomi',
+    message: 'My dear roomie kajal , wishing you a very very happiest birthday ! 🎉 I hope this year turns out to be amazing for you . I really miss you yarr and I love you so much .you are very close to my heart ❤. You know, when I was coming to Jaipur , I kept wondering what kind of roomate I would get . But God gave me such an amazing roomate like you . Watching movies with you , making funny videos , eating from the same plate and teasing each other these have been the best experience of my life . You are such an awesome 😎 and cool friend yarr . Even though we are not living together now but our friendship will always remain strong .I hope tere jaise roomate sabko mile.Thanku for being my confident and biggest supporter . I cherish every moment with you',
   }
 ];
 
