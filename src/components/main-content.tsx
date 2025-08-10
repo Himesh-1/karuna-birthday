@@ -1,3 +1,4 @@
+
 "use client";
 
 import { HeroSection } from '@/components/sections/hero-section';
@@ -14,10 +15,9 @@ import { motion } from 'framer-motion';
 import { PresentsSection } from './sections/presents-section';
 import { CalendarSection } from './sections/calendar-section';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export function MainContent() {
     useEffect(() => {
+        gsap.registerPlugin(ScrollTrigger);
         const sections = gsap.utils.toArray('section');
         sections.forEach((section: any) => {
             gsap.fromTo(section, 
