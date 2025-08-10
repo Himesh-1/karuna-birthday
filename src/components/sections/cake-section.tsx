@@ -25,8 +25,12 @@ const Candle = ({ left, animationDelay, isOut, flicker }: { left: string, animat
             opacity: flicker ? [1, 0.9, 1, 0.85, 1] : 1,
             transition: { duration: 0.15, ease: "easeInOut" }
           }}
-          className="w-3 h-5 bg-amber-400 rounded-full animate-flame origin-bottom"
-          style={{ animationDelay, boxShadow: '0 0 10px 2px #fef08a, 0 0 20px 4px #fca5a5' }}
+          className="w-3 h-5 bg-amber-400 rounded-t-full origin-bottom"
+          style={{ 
+            animation: flicker ? 'none' : 'flame 1.5s ease-in-out infinite',
+            animationDelay, 
+            boxShadow: '0 0 10px 2px #fef08a, 0 0 20px 4px #fca5a5' 
+          }}
         />
       )}
     </AnimatePresence>
@@ -37,26 +41,27 @@ const Candle = ({ left, animationDelay, isOut, flicker }: { left: string, animat
 );
 
 
-const CSSCake = ({ onCakeClick, candlesOut, flicker }) => (
+const CSSCake = ({ onCakeClick, candlesOut, flicker }: { onCakeClick: () => void, candlesOut: boolean, flicker: boolean }) => (
   <div
-    className="relative animate-bobbing cursor-pointer"
-    style={{ animationDelay: '0.5s', width: '350px', height: '300px' }}
+    className="relative animate-bobbing cursor-pointer group"
+    style={{ animationDelay: '0.5s', width: '350px', height: '350px' }}
     onClick={onCakeClick}
   >
       {/* Top Layer */}
-      <CakeLayer className="w-[300px] h-[100px] bg-rose-200 rounded-t-2xl shadow-lg absolute bottom-[150px] left-1/2 -translate-x-1/2">
-          <div className="absolute bottom-0 w-full h-4 bg-rose-300/50" />
+      <CakeLayer className="w-[300px] h-[100px] bg-rose-200 rounded-2xl shadow-lg absolute bottom-[200px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform">
+          <div className="absolute -bottom-2 w-[102%] h-8 bg-rose-300/50 rounded-full left-1/2 -translate-x-1/2" />
           <Candle left="30%" animationDelay="0s" isOut={candlesOut} flicker={flicker} />
           <Candle left="50%" animationDelay="0.2s" isOut={candlesOut} flicker={flicker} />
           <Candle left="70%" animationDelay="0.4s" isOut={candlesOut} flicker={flicker} />
       </CakeLayer>
       {/* Middle Layer */}
-      <CakeLayer className="w-[350px] h-[100px] bg-purple-300 rounded-2xl shadow-xl absolute bottom-[50px] left-1/2 -translate-x-1/2">
+      <CakeLayer className="w-[350px] h-[120px] bg-purple-300 rounded-2xl shadow-xl absolute bottom-[80px] left-1/2 -translate-x-1/2 group-hover:scale-105 transition-transform">
           <div className="absolute top-0 w-full h-8 bg-white/50 rounded-t-2xl" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%)' }} />
-          <div className="absolute bottom-0 w-full h-4 bg-purple-400/40" />
+          <div className="absolute -bottom-2 w-[102%] h-8 bg-purple-400/40 rounded-full left-1/2 -translate-x-1/2" />
       </CakeLayer>
       {/* Base Plate */}
-      <div className="w-[400px] h-[25px] bg-rose-300/80 rounded-lg absolute bottom-[30px] left-1/2 -translate-x-1/2 shadow-2xl" />
+      <div className="w-[400px] h-[20px] bg-rose-300/80 rounded-full absolute bottom-[70px] left-1/2 -translate-x-1/2 shadow-2xl" />
+      <div className="w-[420px] h-[20px] bg-gray-200 rounded-full absolute bottom-[55px] left-1/2 -translate-x-1/2 shadow-inner" />
   </div>
 );
 
@@ -153,7 +158,7 @@ export function CakeSection() {
         </motion.p>
       </div>
       
-      <div className="relative mt-20 w-full min-h-[400px] flex items-center justify-center z-0">
+      <div className="relative mt-12 w-full min-h-[400px] flex items-center justify-center z-0">
           <CSSCake onCakeClick={handleCakeClick} candlesOut={candlesOut} flicker={flicker}/>
       </div>
 
