@@ -22,7 +22,7 @@ export function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.5, type: 'spring', stiffness: 100 }}
         >
-          <motion.span whileHover={{ scale: 1.1, rotate: -2,  color: 'hsl(var(--primary))' }} className="inline-block animate-pulse">Karuna!</motion.span>
+          <motion.span whileHover={{ scale: 1.1, rotate: -2 }} className="inline-block animate-pulse">Karuna!</motion.span>
         </motion.p>
         <motion.p 
             className="mt-4 font-body text-lg text-muted-foreground"
