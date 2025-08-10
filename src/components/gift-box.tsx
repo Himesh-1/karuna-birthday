@@ -52,22 +52,22 @@ export function GiftBox({ onOpen }: GiftBoxProps) {
     <div className="w-screen min-h-screen flex flex-col items-center justify-center p-4 transition-opacity duration-1000" style={{ opacity: isOpening ? 0 : 1 }}>
       {isOpening && <Confetti />}
       <div className="text-center mb-8 md:mb-16 z-10">
-        <h1 className="font-headline text-3xl md:text-6xl text-primary">A Special Surprise for You!</h1>
+        <h1 className="font-headline text-4xl md:text-6xl text-primary">A Special Surprise for You!</h1>
         <p className="font-body text-muted-foreground mt-2">Click the gift to open it</p>
       </div>
 
-      <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
           <Image
             src="/images/your-image-1.png"
             alt="A cute teddy bear"
             width={200}
             height={250}
-            className="transform md:-scale-x-100 animate-bobbing order-2 md:order-1 w-[200px] h-auto"
+            className="transform md:-scale-x-100 animate-bobbing order-2 md:order-1 w-[120px] md:w-[200px] h-auto"
             data-ai-hint="lion waving"
             style={{ animationDelay: '0.2s' }}
           />
 
-        <div className="relative order-1 md:order-2">
+        <div className="relative order-1 md:order-2 my-4 md:my-0">
            <GiftBoxCSS isOpening={isOpening} onClick={handleClick} />
         </div>
 
@@ -76,7 +76,7 @@ export function GiftBox({ onOpen }: GiftBoxProps) {
           alt="A cute teddy bear"
           width={200}
           height={250}
-          className="animate-bobbing order-3 md:order-3 w-[200px] h-auto"
+          className="animate-bobbing order-3 md:order-3 w-[120px] md:w-[200px] h-auto"
           data-ai-hint="bear honey"
         />
       </div>
