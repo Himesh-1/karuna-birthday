@@ -62,11 +62,11 @@ export function GiftBox({ onOpen }: GiftBoxProps) {
             width={360}
             height={450}
             className="transform -scale-x-100 animate-bobbing"
-            data-ai-hint="teddy bear"
+            data-ai-hint="lion waving"
             style={{ animationDelay: '0.2s' }}
           />
 
-        <div className="relative pt-[60px]">
+        <div className="relative pb-5">
            <GiftBoxCSS isOpening={isOpening} onClick={handleClick} />
         </div>
 
@@ -76,7 +76,7 @@ export function GiftBox({ onOpen }: GiftBoxProps) {
           width={360}
           height={450}
           className="animate-bobbing"
-          data-ai-hint="teddy bear"
+          data-ai-hint="bear honey"
         />
       </div>
 
