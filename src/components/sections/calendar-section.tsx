@@ -26,7 +26,8 @@ export function CalendarSection() {
           A Date to Remember
         </h2>
         <p className="mt-4 font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-          A very important day is coming up... can you spot it?
+          A very important day is coming up... can you spot it?<br></br>
+          Click on it !!
         </p>
       </div>
 
