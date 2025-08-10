@@ -48,7 +48,7 @@ export function GiftBox({ onOpen }: GiftBoxProps) {
   };
 
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center bg-background transition-opacity duration-1000" style={{ opacity: isOpening ? 0 : 1 }}>
+    <div className="w-screen h-screen flex flex-col items-center justify-center transition-opacity duration-1000" style={{ opacity: isOpening ? 0 : 1 }}>
       {isOpening && <Confetti />}
       <div className="text-center mb-16 z-10">
         <h1 className="font-headline text-4xl md:text-6xl text-primary">A Special Surprise for You!</h1>

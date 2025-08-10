@@ -34,7 +34,7 @@ export function GuessTheMemorySection() {
   };
 
   return (
-    <section id="guess-the-memory" className="w-full bg-gradient-to-br from-background via-rose-50 to-background py-20 px-4 md:px-8">
+    <section id="guess-the-memory" className="w-full bg-transparent py-20 px-4 md:px-8">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90">
           Guess the Memory!

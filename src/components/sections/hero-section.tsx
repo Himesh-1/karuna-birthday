@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative w-full h-screen flex flex-col items-center justify-center text-center p-4 overflow-hidden bg-gradient-to-br from-purple-100 via-rose-100 to-amber-100">
+    <section id="hero" className="relative w-full h-screen flex flex-col items-center justify-center text-center p-4 overflow-hidden bg-transparent">
       <Confetti />
       <div className="z-10">
         <motion.h1 

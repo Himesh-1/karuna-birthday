@@ -47,7 +47,7 @@ const cardVariants = {
 
 export function WishesSection() {
   return (
-    <section id="wishes" className="w-full bg-gradient-to-tr from-pink-50 via-purple-50 to-blue-50 py-24 px-4 md:px-8">
+    <section id="wishes" className="w-full bg-transparent py-24 px-4 md:px-8">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90">

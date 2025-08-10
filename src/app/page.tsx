@@ -14,7 +14,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center bg-background">
+    <main className="flex flex-col items-center justify-center">
       <audio ref={audioRef} src="/sounds/birthday-sound.mp3" loop={false} />
       {!isGiftOpened ? (
         <GiftBox onOpen={handleGiftOpen} />

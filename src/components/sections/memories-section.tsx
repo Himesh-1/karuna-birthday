@@ -12,7 +12,7 @@ const memories = [
 
 export function MemoriesSection() {
   return (
-    <section id="memories" className="w-full bg-gradient-to-b from-background to-indigo-50 py-20 px-4 md:px-8">
+    <section id="memories" className="w-full bg-transparent py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90 animate-wiggle" style={{ animationDelay: '1s' }}>

@@ -54,7 +54,7 @@ export function PresentsSection() {
   ];
 
   return (
-    <section id="presents" className="w-full bg-gradient-to-tr from-background via-amber-50 to-background py-24 px-4 md:px-8">
+    <section id="presents" className="w-full bg-transparent py-24 px-4 md:px-8">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary-foreground/90">
           One Last Thing...

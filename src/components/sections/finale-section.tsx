@@ -4,7 +4,7 @@ import { ArrowUp } from 'lucide-react';
 
 export function FinaleSection() {
   return (
-    <section id="finale" className="relative w-full h-screen flex flex-col items-center justify-center text-center p-4 bg-background">
+    <section id="finale" className="relative w-full h-screen flex flex-col items-center justify-center text-center p-4 bg-transparent">
       <Confetti />
       <div className="max-w-3xl mx-auto">
         <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary">
