@@ -6,9 +6,6 @@ import { DynamicBalloons } from '@/components/dynamic-loader';
 export const metadata: Metadata = {
   title: "Happy Birthday Karuna",
   description: 'A special birthday celebration for Karuna!',
-  icons: {
-    icon: '/favicon.ico',
-  },
 };
 
 export default function RootLayout({
@@ -18,6 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className="font-body antialiased">
         <DynamicBalloons />
         {children}
