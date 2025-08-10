@@ -7,29 +7,17 @@ import { motion } from 'framer-motion';
 
 const wishes = [
   {
-    name: 'Aisha',
-    message: 'Happy Birthday, Karuna! Hope you have a day that\'s as amazing as you are. 🎉',
+    name: 'Ishita',
+    message: 'Happy birthday to the chaos in my calm… You crashed into my life like a beautiful storm and somehow made it better. Thanks for putting up with my endless rants, my repeat stories,and always reassuring me in your own way.',
   },
   {
-    name: 'Ben',
-    message: 'Cheers to another trip around the sun! Wishing you the best day ever.',
+    name: 'Samta',
+    message: 'Happy Birthday to the one I share endless, uncontrollable laughs with  you are sweet, kind, and yes… pretty too😅🫠🫶 You\’ll always have a special place in my heart Happy Birthday Kajal🫂❤ I wish you get everything your heart desires and may you always stay happy🌟',
   },
   {
-    name: 'Chloe',
-    message: 'Happy Birthday! May your cake be as sweet as you and your day be full of joy.',
-  },
-  {
-    name: 'David',
-    message: 'Sending you the biggest birthday hugs! Hope it\'s a fantastic one.',
-  },
-   {
-    name: 'Elara',
-    message: 'Wishing you a year filled with laughter, adventure, and everything you wished for!',
-  },
-  {
-    name: 'Finn',
-    message: 'To another year of great memories and even greater friendship. Happy Birthday!',
-  },
+    name: ' ',
+    message: 'Happy Birthday, Karuna! 🎉 Wishing you lots of smiles, sweet surprises, and everything that makes your day feel special. Here’s to a year full of good vibes and happy moments!',
+  }
 ];
 
 const cardVariants = {
