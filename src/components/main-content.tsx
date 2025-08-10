@@ -35,20 +35,6 @@ export function MainContent() {
                 }
             );
         });
-
-        // Fun animations for specific elements
-        gsap.from(".fortune-card", {
-            scrollTrigger: {
-                trigger: "#fortune",
-                start: "top 80%",
-            },
-            y: 50,
-            opacity: 0,
-            stagger: 0.2,
-            duration: 1,
-            ease: 'power3.out'
-        });
-        
     }, []);
 
     return (
