@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Present = ({ color, ribbonColor, onClick }: { color: string, ribbonColor: string, onClick: () => void }) => {
   return (
     <div 
-      className="relative cursor-pointer group animate-bobbing scale-75 md:scale-100 border-4 border-primary-foreground/30 rounded-lg"
+      className="relative cursor-pointer group animate-bobbing scale-75 md:scale-100"
       style={{ width: '150px', height: '150px' }}
       onClick={onClick}
     >
@@ -17,7 +17,7 @@ const Present = ({ color, ribbonColor, onClick }: { color: string, ribbonColor: 
         style={{ top: '0', left: '-5px', zIndex: 20, backgroundColor: ribbonColor }}
       ></div>
       {/* Box */}
-      <div className="absolute w-[150px] h-[150px] rounded-lg" style={{ top: '30px', left: '0', backgroundColor: color }}></div>
+      <div className="absolute w-[150px] h-[150px] rounded-lg border-4 border-primary-foreground/30" style={{ top: '30px', left: '0', backgroundColor: color }}></div>
       {/* Ribbon Vertical */}
       <div className="absolute w-[25px] h-[180px]" style={{ top: '0', left: '62.5px', zIndex: 30, backgroundColor: ribbonColor }}></div>
        {/* Bow */}
@@ -64,7 +64,7 @@ export function PresentsSection() {
           Click on the presents a few times!
         </p>
         
-        <div className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 place-items-center gap-y-16 md:gap-8">
+        <div className="mt-12 md:mt-20 grid grid-cols-2 md:grid-cols-4 place-items-center gap-y-16 gap-x-4 md:gap-8">
           {presents.map((p, i) => (
              <motion.div
                 key={i}
