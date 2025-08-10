@@ -26,7 +26,10 @@ export function CalendarSection() {
   };
 
   if (!isMounted) {
-    return null;
+    return (
+        <section id="calendar" className="w-full bg-transparent py-24 px-4 md:px-8 flex flex-col items-center justify-center min-h-screen overflow-hidden">
+        </section>
+    );
   }
 
   return (

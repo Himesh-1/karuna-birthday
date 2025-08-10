@@ -111,7 +111,7 @@ export function CakeSection() {
   };
 
   const handleCakeClick = () => {
-    if (candlesOut || !isMounted) return;
+    if (candlesOut) return;
 
     // Trigger flicker animation
     setFlicker(true);
@@ -143,7 +143,6 @@ export function CakeSection() {
   
   // Clear message after a delay
   useEffect(() => {
-    if (!isMounted) return;
     if (message) {
       const messageTimer = setTimeout(() => {
         if (message.includes('Try harder')) {
@@ -152,8 +151,14 @@ export function CakeSection() {
       }, 4000);
       return () => clearTimeout(messageTimer);
     }
-  }, [message, isMounted]);
+  }, [message]);
 
+  if (!isMounted) {
+      return (
+        <section id="cake" className="relative w-full min-h-screen flex flex-col items-center justify-center py-20 px-4 overflow-hidden bg-transparent">
+        </section>
+      );
+  }
 
   return (
     <section id="cake" className="relative w-full min-h-screen flex flex-col items-center justify-center py-20 px-4 overflow-hidden bg-transparent">
@@ -192,7 +197,7 @@ export function CakeSection() {
              whileInView="visible"
              viewport={{ once: true, amount: 0.5, margin: "100px" }}
           >
-            {isMounted && <CSSCake onCakeClick={handleCakeClick} candlesOut={candlesOut} flicker={flicker}/>}
+            <CSSCake onCakeClick={handleCakeClick} candlesOut={candlesOut} flicker={flicker}/>
           </motion.div>
       </div>
 
