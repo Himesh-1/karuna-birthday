@@ -15,7 +15,7 @@ export default function Home() {
   const handleGiftOpen = () => {
     setIsGiftOpened(true);
     // Play sound on a user interaction
-    // audioRef.current?.play().catch(console.error);
+    audioRef.current?.play().catch(console.error);
   };
   
   if (!isMounted) {
@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center">
-      <audio ref={audioRef} src="/sounds/birthday-sound.mp3" loop={false} />
+      <audio ref={audioRef} src="/sounds/birthday-sound.mp3" loop={true} />
       {!isGiftOpened ? (
         <DynamicGiftBox onOpen={handleGiftOpen} />
       ) : (
